@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/01_Hello_Spring/01_Hello_Spring.iml" filepath="$PROJECT_DIR$/01_Hello_Spring/01_Hello_Spring.iml" />
-      <module fileurl="file://$PROJECT_DIR$/02_Bean_Life_Cycle/02_Bean_Life_Cycle.iml" filepath="$PROJECT_DIR$/02_Bean_Life_Cycle/02_Bean_Life_Cycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_Spring_Beans_Life_Cycle/02_Spring_Beans_Life_Cycle.iml" filepath="$PROJECT_DIR$/02_Spring_Beans_Life_Cycle/02_Spring_Beans_Life_Cycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_Spring_Beans_Scopes/03_Spring_Beans_Scopes.iml" filepath="$PROJECT_DIR$/03_Spring_Beans_Scopes/03_Spring_Beans_Scopes.iml" />
     </modules>
   </component>
 </project>
