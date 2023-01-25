@@ -13,34 +13,34 @@ import org.springframework.stereotype.Component;
  * @since : 0.1.0
  **/
 @Component
-public class PojoOne implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
-    public PojoOne() {
-        System.out.println("PojoOne:Instantiated");
+public class PojoTwo implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
+    public PojoTwo() {
+        System.out.println("PojoTwo:Instantiated");
     }
 
     @Override
     public void setBeanName(String name) {
-        System.out.println("PojoOne:BeanName Aware: "+name);
+        System.out.println("PojoTwo:BeanName Aware: "+name);
     }
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("PojoOne:BeanFactory Aware");
+        System.out.println("PojoTwo:BeanFactory Aware");
     }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("PojoOne:ApplicationContext Aware");
+        System.out.println("PojoTwo:ApplicationContext Aware");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("PojoOne:InitializingBean: Bean is Ready for USE");
+        System.out.println("PojoTwo:InitializingBean: Bean is Ready for USE");
         System.out.println("=============================");
     }
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("PojoOne:Destroyed");
+        System.out.println("PojoTwo:Destroyed");
     }
 }
