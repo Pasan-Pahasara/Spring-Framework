@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @since : 0.1.0
  **/
 @Component
-public class A {
+public class A implements DI{
 //    @Autowired
     SuperB superB;//Property Injection
 //    @Autowired //අනිවාර්‍යෙන්ම දාන්න ඕන්නෑ.හැබැයි convention එකක් විදිහට දානවා.
@@ -18,11 +18,17 @@ public class A {
 //        this.superB=superB;//Constructor Injection
         System.out.println("A:Instantiated");
     }
-    @Autowired
-    public void setInjection(SuperB superB){
-        this.superB=superB;
+//    @Autowired
+    public void setInjection(SuperB superB){//Setter method Injection
+//        this.superB=superB;
     }
     public void test(){
         superB.methodUseByA();
+    }
+
+    @Autowired
+    @Override
+    public void inject(SuperB superB) {//Interface through Injection
+        this.superB=superB;
     }
 }
