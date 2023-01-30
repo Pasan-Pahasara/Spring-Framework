@@ -13,10 +13,14 @@ import org.springframework.stereotype.Component;
 public class A {
 //    @Autowired
     SuperB superB;//Property Injection
-    @Autowired
+//    @Autowired //අනිවාර්‍යෙන්ම දාන්න ඕන්නෑ.හැබැයි convention එකක් විදිහට දානවා.
     public A(SuperB superB) {
-        this.superB=superB;//Constructor Injection
+//        this.superB=superB;//Constructor Injection
         System.out.println("A:Instantiated");
+    }
+    @Autowired
+    public void setInjection(SuperB superB){
+        this.superB=superB;
     }
     public void test(){
         superB.methodUseByA();
