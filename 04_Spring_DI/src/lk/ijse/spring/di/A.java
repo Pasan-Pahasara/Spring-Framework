@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class A {
     @Autowired
-    SuperB superB;
+    SuperB superB;//Property Injection
     public A() {
         System.out.println("A:Instantiated");
     }
