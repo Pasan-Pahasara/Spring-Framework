@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Boy {
     @Autowired
-    GoodGirl girlOne;
+    GoodGirl girl;
 
     public Boy() {
         System.out.println("Boy:Instantiated");
@@ -20,7 +20,7 @@ public class Boy {
 
     public void chatWithGirl() {
 //        Girl girl = new Girl(); //don't create objects
-        girlOne.chat();
+        girl.chat();
     }
 }
 
