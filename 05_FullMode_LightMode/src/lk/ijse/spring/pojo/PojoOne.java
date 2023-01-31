@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -42,5 +43,18 @@ public class PojoOne implements BeanNameAware, BeanFactoryAware, ApplicationCont
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         System.out.println("PojoOne:Application Context Aware");
+    }
+
+    @Bean
+    public PojoTwo pojoTwo(){
+        //inter-bean dependencies invocation
+        PojoThree pojoThree = pojoThree();
+        System.out.println(pojoThree);
+        return new PojoTwo();
+    }
+
+    @Bean
+    public PojoThree pojoThree(){
+        return new PojoThree();
     }
 }
