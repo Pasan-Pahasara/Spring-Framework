@@ -17,8 +17,8 @@ public class AppInitializer {
         //If we have more than one config class
         //We can register them to the context as follows
         ctx.register(AppConfig.class);
-        ctx.register(ConfigOne.class);
-        ctx.register(ConfigTwo.class);
+//        ctx.register(ConfigOne.class);
+//        ctx.register(ConfigTwo.class);
         ctx.refresh();
         ctx.registerShutdownHook();
     }
