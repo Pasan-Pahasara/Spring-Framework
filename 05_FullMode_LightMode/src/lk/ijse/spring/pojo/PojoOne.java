@@ -45,11 +45,15 @@ public class PojoOne implements BeanNameAware, BeanFactoryAware, ApplicationCont
         System.out.println("PojoOne:Application Context Aware");
     }
 
+    //Light Mode
+    //In light inter bean dependencies are not satisfied
     @Bean
     public PojoTwo pojoTwo(){
         //inter-bean dependencies invocation
-        PojoThree pojoThree = pojoThree();
-        System.out.println(pojoThree);
+        PojoThree pojoThree1 = pojoThree();//In here they create simple Object
+        PojoThree pojoThree2 = pojoThree();//In here they create simple Object
+        System.out.println(pojoThree1);//Two links
+        System.out.println(pojoThree2);//Two links
         return new PojoTwo();
     }
 

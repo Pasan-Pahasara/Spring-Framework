@@ -20,8 +20,10 @@ public class AppConfig {
 //    @Bean
 //    public PojoTwo pojoTwo(){
 //        //inter-bean dependencies invocation
-//        PojoThree pojoThree = pojoThree();
-//        System.out.println(pojoThree);
+//        PojoThree pojoThree1 = pojoThree();//In here they create fully satisfied Object
+//        PojoThree pojoThree2 = pojoThree();//In here they create fully satisfied Object
+//        System.out.println(pojoThree1);//Same link
+//        System.out.println(pojoThree2);//Same link
 //        return new PojoTwo();
 //    }
 //
