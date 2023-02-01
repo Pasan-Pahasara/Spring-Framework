@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/two")
-public class TwoController {
+public class BController {
     /**
      * Mapping Methods කියනවා ඒකටම තව Handler Methods කියනවා.
      * /b/c -> මේවට path segments කියනවා

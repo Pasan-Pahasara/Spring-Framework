@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/three")
-public class ThreeController {
+public class CController {
     //http://localhost:8080/mapping/three/id/C001/Dasun
 
     /**

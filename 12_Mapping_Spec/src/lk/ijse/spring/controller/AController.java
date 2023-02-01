@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/one")
-public class OneController {
+public class AController {
     @GetMapping
     public String testOne1(){
         return "Get Method Invoked";
