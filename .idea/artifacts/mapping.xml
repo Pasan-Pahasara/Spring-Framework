@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mapping">
+    <output-path>$PROJECT_DIR$/out/artifacts/mapping</output-path>
+    <root id="archive" name="mapping.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="12_Mapping_Spec" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="spring-aop-5.3.9-javadoc" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="12_Mapping_Spec/web/Web" />
+    </root>
+  </artifact>
+</component>
