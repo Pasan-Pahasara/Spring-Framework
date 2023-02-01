@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/06_Spring_Configurations/06_Spring_Configurations.iml" filepath="$PROJECT_DIR$/06_Spring_Configurations/06_Spring_Configurations.iml" />
       <module fileurl="file://$PROJECT_DIR$/07_Runtime_Value_Injection/07_Runtime_Value_Injection.iml" filepath="$PROJECT_DIR$/07_Runtime_Value_Injection/07_Runtime_Value_Injection.iml" />
       <module fileurl="file://$PROJECT_DIR$/08_Spring_Environment/08_Spring_Environment.iml" filepath="$PROJECT_DIR$/08_Spring_Environment/08_Spring_Environment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_Spring_Web_MVC/09_Spring_Web_MVC.iml" filepath="$PROJECT_DIR$/09_Spring_Web_MVC/09_Spring_Web_MVC.iml" />
     </modules>
   </component>
 </project>
