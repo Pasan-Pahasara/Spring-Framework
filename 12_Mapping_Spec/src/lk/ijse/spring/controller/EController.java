@@ -21,6 +21,7 @@ public class EController {
      * http://localhost:8080/mapping/five/path/1ormore/A/B
      * */
 
+    //* එක තීන තැනට characters එකක් හෝ ඊට වැඩි ප්‍රමානයක් තීන්න පුලුවන්.
     @GetMapping(path = "/path/*/A/B")
     public String testOne(){
         return "Method One Invoked";
