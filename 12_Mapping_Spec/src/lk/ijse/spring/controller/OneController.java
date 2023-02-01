@@ -1,7 +1,6 @@
 package lk.ijse.spring.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : ShEnUx
@@ -12,4 +11,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/one")
 public class OneController {
+    @GetMapping
+    public String testOne1(){
+        return "Get Method Invoked";
+    }
+/**
+ * Class එකක් ඇතුලේ එක වගේ Method දෙකක් තියන්න බෑ Ambiguous Mapping කියලා Error එකක් එනවා.
+ * */
+//    @GetMapping
+//    public String testOne2(){
+//        return "Get Method Invoked";
+//    }
+
+    @PostMapping
+    public String testTwo(){
+        return "Post Method Invoked";
+    }
+
+    @PutMapping
+    public String testThree(){
+        return "Put Method Invoked";
+    }
+
+    @DeleteMapping
+    public String testFour(){
+        return "Delete Method Invoked";
+    }
 }
