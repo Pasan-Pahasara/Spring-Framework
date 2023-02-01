@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/two")
 public class TwoController {
+    /**
+     * Mapping Methods කියනවා ඒකටම තව Handler Methods කියනවා.
+     * /b/c -> මේවට path segments කියනවා
+     * */
     @GetMapping//Path එකක් දීලා නැත්තම් එක default call කරාම එන්නේ.
     public String defaultMethod(){
         return "Default Get Method Invoked";
