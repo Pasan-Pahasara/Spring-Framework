@@ -43,12 +43,30 @@ public class ThreeController {
         return "Get Method Invoked 2";
     }
 
-    @GetMapping(path = "/id/{id}/{name}")
+//    @GetMapping(path = "/id/{id}/{name}")
     /**
      * Parameter එකේ name එකයි path variable එකේ name එක අසමානනම් විතරයි parameter එකට value එකක් දාන්නේ.
      * මේවට various කියලා කියන්නේ. EXAMPLE :- @PathVariable("C001")
      * */
-    public String testOne3(@PathVariable String id, @PathVariable String name) {
-        return "Get Method Invoked 3 " + id + " " + name;
+//    public String testOne3(@PathVariable String id, @PathVariable String name) {
+//        return "Get Method Invoked 3 " + id + " " + name;
+//    }
+
+    /**
+     * furthermore if we want we can validate the path variables as
+     * we wanted
+     * {id : [a-z]{2}} -> validate with reg ex
+     * */
+
+    //http://localhost:8080/mapping/three/id/C002/Uvindu //Ok
+    //http://localhost:8080/mapping/three/id/CKK2/U38383 //Wrong
+    @GetMapping(path = "/id/{id:[C]{1}[0-9]{3}}/{name:[A-Z]{4}}")//Class variable විදිහට දෙනකොට අපිට පුලුවන් validate කරලා දෙන්න.(reg ex වලින්)
+    public String testOne4(@PathVariable String id, @PathVariable String name) {
+        return "Get Method 1 Invoked " + id + " " + name;
+    }
+
+    @GetMapping(path = "/id/{id:[C]{2}[0-9]{3}}/{name:[a-z]{5}}") //()
+    public  String testOne221(@PathVariable String id,@PathVariable String name){
+        return "Get Method 2 Invoked "+id+" "+name;
     }
 }
