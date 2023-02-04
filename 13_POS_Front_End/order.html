@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POS | Order</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap for Style -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="container-fluid">
+
+<header id="headerBar" class="row">
+
+    <nav class="navbar navbar-expand-lg border-bottom shadow-lg sticky-top navbar-dark"
+         style="background-color: #232121">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-size: 18px; color: #A87E5A;">
+                <!-- navbar image setup -->
+                <img alt="" src="assets/img/favicon.png"
+                     style="width: 70px;height: 58px;position: absolute;left: 0;top: 0;"><span
+                    style="font-size: 20px; font-weight: bolder; color: #f0f0f0; margin-left: 46px;">YᑌᗰᗰY</span> treats</a>
+            <!--Toggle button-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i
+                                class="bi bi-house-fill"></i>
+                            Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./customer.html"><i
+                                class="bi bi-people-fill"></i> Customers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./item.html"><i
+                                class="bi bi-handbag-fill"></i> Items</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./order.html"><i
+                                class="bi bi-cart-check-fill"></i> Orders</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./orderDetails.html"><i
+                                class="bi bi-card-checklist"></i> Orders
+                            Details</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav me-6 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-plus-fill"></i>
+                            Sign Up</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-box-arrow-right"></i>
+                            Log Out</a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<main class="row mx-3">
+    <section class="col-12 mb-0">
+        <div class="row">
+            <div id="display"
+                 style="background: linear-gradient(to right, #000000, #b88962);box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px!important;"
+                 class="p-1 px-3 col rounded-3 fw-bolder bg-secondary text-light fs-3 mt-4 shadow-sm"><i
+                    class="fas fa-user-edit me-2"></i>Place Order
+            </div>
+        </div>
+    </section>
+
+    <!--place order section start-->
+    <section class="row justify-content-center mt-4">
+        <div class="row justify-content-evenly">
+            <!--invoice section-->
+            <div class="col-10 col-md-5 col-lg-6 p-1 bg-white shadow-lg rounded-4" style="height: max-content">
+                <h3 class="text-center mb-3 p-1 text-light rounded-3"
+                    style="background: linear-gradient(to left, #000000, #b88962);box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px!important;">
+                    Invoice</h3>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="orderId" class="form-label mb-1">Order ID :</label>
+                        <input placeholder="Ex : - O-001" class="form-control" id="orderId" type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="orderDate" class="form-label mb-1">Order Date :</label>
+                        <input placeholder="Order Date" class="form-control" id="orderDate" type="date">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="cusId" class="form-label mb-1">Customer ID :</label>
+                        <select aria-label="Default select example" class="form-select" id="cusId"></select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label class="form-label mb-1">Name :</label>
+                        <input placeholder="Ex : - Pahasara" class="form-control" disabled id="cusName" type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="cusAddress" class="form-label font-s mb-1">Address :</label>
+                        <input placeholder="Ex : - 28/A Wakwalla, Galle" class="form-control" disabled id="cusAddress"
+                               type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="cusSalary" class="form-label mb-1">Salary :</label>
+                        <input placeholder="Ex : - RS: 50000.00" class="form-control" disabled id="cusSalary"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <!--items section-->
+            <div class="col-10 col-md-5 col-lg-5 p-1 bg-white shadow-lg rounded-4" style="height: max-content">
+                <h3 class="text-center mb-3 p-1 text-light rounded-3"
+                    style="background: linear-gradient(to left, #413e3e, #b88962);box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px!important;">
+                    Items</h3>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="cmbCode" class="form-label mb-1">Item Code :</label>
+                        <select aria-label="Default select example" class="form-select" id="cmbCode"></select>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="iName" class="form-label mb-1">Item Name :</label>
+                        <input placeholder="Ex : - Pizza" class="form-control" disabled id="iName" type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label for="iPrice" class="form-label mb-1">Unit Price :</label>
+                        <input placeholder="Ex : - Rs: 999.00" class="form-control" disabled id="iPrice" type="text">
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="iQtyOnHand" class="form-label mb-1">Qty On Hand :</label>
+                        <input placeholder="Ex : - 120" class="form-control" disabled id="iQtyOnHand" type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="buyQty" class="form-label mb-1">Ordered Qty :</label>
+                        <input placeholder="Ex : - 3" class="form-control small" id="buyQty" type="text">
+                        <strong class="control-error text-danger" id="lblCheckQty"></strong>
+                    </div>
+                </div>
+            </div>
+            <!--Add To Cart Button-->
+            <div class="row">
+                <nav class="navbar">
+                    <div class="container-fluid justify-content-end me-4 p-2">
+                        <button class="btn-modern" id="btnAddCart" type="button">Add To Cart <i
+                                class="bi bi-cart-plus-fill"></i></button>
+                    </div>
+                </nav>
+            </div>
+            <!-- Table -->
+            <section class="col-10 col-md-10 col-lg-8 p-2">
+                <div class="col-12 col-lg-12 d-flex rounded-2 shadow overflow-auto">
+                    <!--Item Table-->
+                    <table class="table table-hover">
+                        <!--Table head-->
+                        <thead class="text-white card-header-tabs table-responsive sticky-top">
+                        <!--Table head row-->
+                        <tr>
+                            <!--Table headings-->
+                            <th scope="col">Item Code</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tr id="loader" style="display: none;text-align: center">
+                            <td colspan="4">
+                                <h1>Loading..!</h1>
+                            </td>
+                        </tr>
+                        <!--Table body-->
+                        <tbody id="tableAddCart">
+                        <!--Table data row-->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!--total section-->
+            <div class="col-10 col-md-10 col-lg-3 p-2 bg-white shadow-lg rounded-4" style="height: max-content">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <h3 class="text-start text-danger fw-bolder rounded-5">Total :
+                            <input class="form-control mt-1" placeholder="RS: 0.00/=" disabled id="lblTotal"
+                                   type="text">
+                        </h3>
+                    </div>
+                </div>
+                <div class="row mt-0">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="discount" class="form-label mb-1">Discount</label>
+                        <input placeholder="0" class="form-control" disabled id="discount" type="number"
+                               role="spinbutton">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="subTotal" class="form-label mb-1">Sub Total (Rs.)</label>
+                        <input placeholder="Rs: 0.00/=" class="form-control" disabled id="subTotal" type="text">
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="cash" class="form-label mb-1">Cash (Rs.)</label>
+                        <input placeholder="Rs: 0.00/=" class="form-control" disabled id="cash" type="text">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <label for="balance" class="form-label mb-1">Balance (Rs.)</label>
+                        <input placeholder="Rs: 0.00/=" class="form-control" disabled id="balance" type="text">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <strong class="control-error text-danger" id="lblCheckSubtotal"></strong>
+                    </div>
+                </div>
+            </div>
+            <!--Place Order Button-->
+            <div class="row">
+                <nav class="navbar">
+                    <div class="container-fluid justify-content-end me-4 p-2">
+                        <button class="btn-modern" id="btnPlaceOrder" type="button">Place Order <i
+                                class="bi bi-shop"></i></button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!--place order section end-->
+</main>
+
+<!-- Bootstrap for JS -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- jQuery for JS -->
+<script src="assets/jQuery/jquery-3.6.1.min.js"></script>
+
+<!-- Swal CDN link -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let baseUrl = "http://localhost:8080/BackEnd/";//Back end එකේ location URL එක.
+
+    // disable cart button and place order button
+    // $("#btnAddCart").attr('disabled', true);
+    $("#btnPlaceOrder").attr('disabled', true);
+
+    // load all items from the database
+    loadAllCustomersForOption();
+    loadAllItemsForOption();
+    setDates();
+    searchCustomer();
+    generateOrderID();
+
+    let total = 0;
+    let discount = 0;
+    let subTotal = 0;
+    let tempTot = 0;
+
+    function generateOrderID() {
+        $("#orderId").val("ORD-001");
+        $.ajax({
+            url: baseUrl + "purchase?option=GenerateOrderID",
+            method:"GET",
+            dataType: "json",
+            success: function (resp) {
+                let orderId = resp.oid;
+                let tempId = parseInt(orderId.split("-")[1]);
+                tempId = tempId + 1;
+                if (tempId <= 9) {
+                    $("#orderId").val("ORD-00" + tempId);
+                } else if (tempId <= 99) {
+                    $("#orderId").val("ORD-0" + tempId);
+                } else {
+                    $("#orderId").val("ORD-" + tempId);
+                }
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+    // //generateOrderID
+    // function generateOrderID() {
+    //     $("#orderId").val("ORD-001");
+    //     let res = searchOrder();
+    //
+    //     let tempId = parseInt(res.split("-")[1]);
+    //     tempId = tempId + 1;
+    //     if (tempId <= 9) {
+    //         $("#orderId").val("ORD-00" + tempId);
+    //     } else if (tempId <= 99) {
+    //         $("#orderId").val("ORD-0" + tempId);
+    //     } else {
+    //         $("#orderId").val("ORD-" + tempId);
+    //     }
+    // }
+
+    //
+    // // order search function
+    // function searchOrder() {
+    //     let orderId = "";
+    //     $.ajax({
+    //         url: baseUrl + "purchase?option=GenerateOrderID",
+    //         dataType: "json",
+    //         method: "GET",
+    //         async: false,
+    //         success: function (resp) {
+    //             orderId = resp.orderId;
+    //             console.log(resp.orderId)
+    //         }
+    //     });
+    //     return orderId;
+    // }
+
+    // order search function
+    function searchOrder() {
+        let orderId = "";
+        $.ajax({
+            url: baseUrl + "purchase?option=GenerateOrderID",
+            // dataType: "json",
+            // async: false,
+            success: function (resp) {
+                orderId = resp.oid;
+            }
+        });
+        return orderId;
+    }
+
+    // load customers'
+    function loadAllCustomersForOption() {
+        $("#cusId").empty();
+        $("#cusId").append(`<option disabled selected hidden>- Select Customer -</option>`);
+
+        $.ajax({
+            url: baseUrl + "customer",
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+
+                for (let i of res.data) {
+                    let id = i.id;
+
+                    $("#cusId").append(`<option value="${id}">${id}</option>`);
+                }
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    // load items'
+    function loadAllItemsForOption() {
+        $("#cmbCode").empty();
+        $("#cmbCode").append(`<option disabled selected hidden>- Select Items -</option>`);
+        $.ajax({
+            url: baseUrl + "item",
+            success: function (res) {
+                console.log(res);
+
+                for (let i of res.data) {
+                    let id = i.code;
+                    $("#cmbCode").append(`<option value="${id}">${id}</option>`);
+                }
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    // setDate
+    function setDates() {
+        let date = new Date().toJSON().split("T")[0];
+        $("#orderDate").val(date);
+    }
+
+    // customer search function
+    function searchCustomer(id) {
+        let response = "";
+        $.ajax({
+            url: baseUrl + "customer",
+            dataType: "json",
+            async: false,
+            success: function (resp) {
+                response = resp.data.filter((c) => {
+                    return c.id === id;
+                });
+            }
+        });
+        return response;
+    }
+
+    // item search function
+    function searchItem(code) {
+        let response = "";
+        $.ajax({
+            url: baseUrl + "item",
+            dataType: "json",
+            method: "GET",
+            async: false,
+            success: function (resp) {
+                response = resp.data.filter((i) => {
+                    return i.code === code;
+                });
+            }
+        });
+        return response;
+    }
+
+    // customer set values
+    $("#cusId").change(function () {
+        let id = $("#cusId").val();
+        $("#cusId").val(id);
+        let res = searchCustomer(id);
+        if (res.length > 0) {
+            $("#cusName").val(res[0].name);
+            $("#cusAddress").val(res[0].salary);
+            $("#cusSalary").val(res[0].address);
+        }
+    });
+
+    // item set values
+    $("#cmbCode").change(function () {
+        let code = $("#cmbCode").val();
+        $("#cmbCode").val(code);
+        let res = searchItem(code);
+        if (res.length > 0) {
+            $("#iName").val(res[0].description);
+            $("#iPrice").val(res[0].unitPrice);
+            $("#iQtyOnHand").val(res[0].qtyOnHand);
+        }
+    });
+
+    // // added details to the Cart
+    // $("#btnAddCart").on('click', function () {
+    //     let code = $("#cmbCode").val();
+    //     let description = $("#iName").val();
+    //     let itemPrice = $("#iPrice").val();
+    //     let buyQty = $("#buyQty").val();
+    //     total = parseFloat(itemPrice) * parseFloat(buyQty);
+    //     tempTot += total;
+    //     $("#tableAddCart").append(`<tr><td>${code}</td><td>${description}</td><td>${itemPrice}</td><td>${buyQty}</td><td>${total}</td></tr>`);
+    //     $("#lblTotal").val("Rs: " + tempTot);
+    //
+    //     // validate disabled discount and cash
+    //     if (total != null) {
+    //         $("#discount").attr('disabled', false);
+    //         $("#cash").attr('disabled', false);
+    //     } else {
+    //         $("#discount").attr('disabled', true);
+    //         $("#cash").attr('disabled', true);
+    //     }
+    // });
+
+    //////////////////////////////////////////////////////////////////////
+
+
+
+    // add to cart button
+    $("#btnAddCart").on('click', function () {
+        // duplicate false
+        let duplicate = false;
+        for (let i = 0; i < $("#tableAddCart tr").length; i++) {
+            if ($("#cmbCode option:selected").text() === $("#tableAddCart tr").children(':nth-child(1)')[i].innerText) {
+                duplicate = true;
+            }
+        }
+
+        if (duplicate !== true) {
+            loadAddCartTable();
+            countingDownQty($("#buyQty").val());
+            calcTotal($("#buyQty").val() * $("#iPrice").val());
+        } else if (duplicate === true) {
+
+            manageQtyOnHand(tableRow.children(':nth-child(4)').text(), $("#buyQty").val());
+            $(tableRow).children(':nth-child(4)').text($("#buyQty").val());
+
+            manageTotal(tableRow.children(':nth-child(5)').text(), $("#buyQty").val() * $("#iPrice").val());
+            $(tableRow).children(':nth-child(5)').text($("#buyQty").val() * $("#iPrice").val());
+        }
+
+        // click table row and set values to text fields
+        $("#tableAddCart>tr").on('click', function () {
+            tableRow = $(this);
+            let itemCode = $(this).children(":eq(0)").text();
+            let itemName = $(this).children(":eq(1)").text();
+            let unitPrice = $(this).children(":eq(2)").text();
+            let qty = $(this).children(":eq(3)").text();
+            // let total = $(this).children(":eq(4)").text();
+
+            $("#cmbCode").val(itemCode);
+            $("#iName").val(itemName);
+            $("#iPrice").val(unitPrice);
+            $("#buyQty").val(qty);
+            // $("#lblTotal").val(total);
+        });
+
+        let itemIdQ = $("#cmbCode").val();
+        let response = updateItemQty(itemIdQ);
+        if (response) {
+        }
+    });
+    //
+    // // load cart details to the table
+    // $("#btnAddCart").empty();
+
+    function loadAddCartTable() {
+        let code = $("#cmbCode").val();
+        let description = $("#iName").val();
+        let itemPrice = $("#iPrice").val();
+        let buyQty = $("#buyQty").val();
+        total = parseFloat(itemPrice) * parseFloat(buyQty);
+        $("#tableAddCart").append(`<tr><td>${code}</td><td>${description}</td><td>${itemPrice}</td><td>${buyQty}</td><td>${total}</td></tr>`);
+
+        // validate disabled discount and cash
+        if (total != null) {
+            $("#discount").attr('disabled', false);
+            $("#cash").attr('disabled', false);
+        } else {
+            $("#discount").attr('disabled', true);
+            $("#cash").attr('disabled', true);
+        }
+    }
+
+    // counting orderDTO qty hand after buy
+    function countingDownQty(orderQty) {///ggg
+        let minQty = parseInt(orderQty);
+        let reduceQty = parseInt($("#iQtyOnHand").val());
+        reduceQty = reduceQty - minQty;
+        $("#iQtyOnHand").val(reduceQty);
+    }
+
+    // calculate total
+    function calcTotal(number) {
+        total += number;
+        $("#lblTotal").val("RS: " + total + "/=");
+    }
+
+    // manage qtyOnHand function
+    function manageQtyOnHand(preQty, nowQty) {
+        var preQty = parseInt(preQty);
+        var nowQty = parseInt(nowQty);
+        let avaQty = parseInt($("#iQtyOnHand").val());
+
+        avaQty = avaQty + preQty;
+        avaQty = avaQty - nowQty;
+
+        $("#iQtyOnHand").val(avaQty);
+    }
+
+    // manage total function
+    function manageTotal(preTotal, nowTotal) {
+        total -= preTotal;
+        total += nowTotal;
+
+        $("#lblTotal").val("RS: " + total + "/=");
+    }
+
+    // check buy quantity and enable btnAddCart button
+    $(document).on("change keyup blur", "#buyQty", function () {
+        let qtyOnHand = $("#iQtyOnHand").val();
+        let buyQty = $("#buyQty").val();
+        let buyOnHand = qtyOnHand - buyQty;
+        if (buyOnHand < 0) {
+            $("#lblCheckQty").parent().children('strong').text(qtyOnHand + " : Empty On Stock..!!");
+            $("#btnAddCart").attr('disabled', true);
+        } else {
+            $("#lblCheckQty").parent().children('strong').text("");
+            $("#btnAddCart").attr('disabled', false);
+        }
+    });
+
+    // update Item Qty function
+    function updateItemQty(itemIdQ) {///vada na
+        let itemQ = searchItemQty(itemIdQ);
+            if (itemQ.qtyOnHand !== null) {
+                itemQ.qtyOnHand = $("#iQtyOnHand").val();
+                getAllItems();
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+    // item qty search function
+    function searchItemQty(itemIdQ) {
+        let response = "";
+        $.ajax({
+            url: baseUrl + "item",
+            dataType: "json",
+            async: false,
+            success: function (resp) {
+                response = resp.data.filter((q) => {
+                    return q.qtyOnHand === itemIdQ;
+                });
+            }
+        });
+        return response;
+    }
+    //////////////////////////////////////////////////////////////
+    // place Order
+    $("#btnPlaceOrder").on('click', function () {
+        let orderID = $("#orderId").val();
+        let customerID = $("#cusId").val();
+        let orderDate = $("#orderDate").val();
+        let subTotal = $("#subTotal").val();
+        let discount = $("#discount").val();
+
+        let customerName = $("#cusName").val();
+        let itemName = $("#iName").val();
+        let orderD = getItemDetails();
+
+        alert(orderD)
+        let ob = {
+            oid: orderID,
+            date: orderDate,
+            cusID: customerID,
+            subTotal: subTotal,
+            discount: discount,
+            name: customerName,
+            description: itemName,
+            orderDetails: orderD
+        }
+
+        //send request
+        $.ajax({
+            url: baseUrl + "purchase",
+            method: "post",
+            dataType: "json",
+            data: JSON.stringify(ob),
+            contentType: "application/json",
+            success: function (resp) {
+                alert(resp.message);
+                $("#tableAddCart").empty();
+                $("#orderId").val(generateOrderID());
+            },
+            error: function (error) {
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    });
+
+    function getItemDetails() {
+        let rows = $("#tableAddCart").children().length;
+        var array = [];
+        for (let i = 0; i < rows; i++) {
+            let itCode = $("#tableAddCart").children().eq(i).children(":eq(0)").text();
+            let itQty = $("#tableAddCart").children().eq(i).children(":eq(3)").text();
+            let itPrice = $("#tableAddCart").children().eq(i).children(":eq(2)").text();
+            array.push({code: itCode, qty: itQty, price: itPrice,});
+        }
+        return array;
+    }
+
+    // dblclick delete function
+    $("#tableAddCart").on('dblclick', function () {
+        $(this).children('tr').eq(0).remove();
+    });
+
+    $("#buyQty").on('click', function () {
+        let buyQty = $("#buyQty").val();
+        let cusId = $("#cusId").val();
+        let cmbCode = $("#cmbCode").val();
+
+        $("#btnAddCart").attr('disabled', true);
+
+        if ((cusId != null && cmbCode != null) && buyQty != null) {
+            $("#btnAddCart").attr('disabled', false);
+        } else {
+            $("#btnAddCart").attr('disabled', true);
+        }
+    });
+
+    // discount added and calculate total
+    $(document).on("change keyup blur", "#discount", function () {
+        discount = $("#discount").val();
+        discount = (total / 100) * discount;
+        subTotal = total - discount;
+
+        $("#subTotal").val(subTotal);
+    });
+
+    // added cash and check balance
+    $(document).on("change keyup blur", "#cash", function () {
+        let cash = $("#cash").val();
+        let balance = cash - subTotal;
+        $("#balance").val("Rs: " + balance);
+        if (balance < 0) {
+            $("#lblCheckSubtotal").parent().children('strong').text(balance + " : plz enter valid Balance");
+            $("#btnPlaceOrder").attr('disabled', true);
+        } else {
+            $("#lblCheckSubtotal").parent().children('strong').text("");
+            $("#btnPlaceOrder").attr('disabled', false);
+        }
+    });
+</script>
+</body>
+</html>

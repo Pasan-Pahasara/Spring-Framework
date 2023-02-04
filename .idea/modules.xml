@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/10_Controller/10_Controller.iml" filepath="$PROJECT_DIR$/10_Controller/10_Controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../AAD (Advance API Development)Spring-Framework/11_Rest_Controller/11_Rest_Controller.iml" filepath="$PROJECT_DIR$/../../AAD (Advance API Development)Spring-Framework/11_Rest_Controller/11_Rest_Controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/12_Mapping_Spec/12_Mapping_Spec.iml" filepath="$PROJECT_DIR$/12_Mapping_Spec/12_Mapping_Spec.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13_POS_Front_End/13_POS_Front_End.iml" filepath="$PROJECT_DIR$/13_POS_Front_End/13_POS_Front_End.iml" />
     </modules>
   </component>
 </project>

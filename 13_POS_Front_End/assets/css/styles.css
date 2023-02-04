@@ -1,0 +1,317 @@
+/**
+ * @author : Pasan Pahasara
+ * @since : 0.1.0
+ **/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Scrollbar
+   ========================================================================== */
+
+/**
+ * Customized Scrollbar.
+ */
+::-webkit-scrollbar {
+    width: 6px;
+    background: #3f3838;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b88962;
+}
+
+* {
+    font-family: Ubuntu, sans-serif;
+    font-weight: normal;
+}
+
+/*start customer*/
+#customerForm {
+    margin: 15px;
+}
+
+.btn-modern {
+    width: 91px;
+    height: 38px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease 0s;
+    outline: none !important;
+}
+
+#btnSearchCustomer {
+    border: solid 2px #70a1ff;
+    color: #70a1ff;
+}
+
+#btnSearchCustomer:hover {
+    background-color: #70a1ff;
+    box-shadow: 0px 15px 20px #6e82bd;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnAllCustomer {
+    width: 170px;
+    border: solid 2px #a55eea;
+    color: #a55eea;
+}
+
+#btnAllCustomer:hover {
+    background-color: #a55eea;
+    box-shadow: 0px 15px 20px #a074d5;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnSearchCustomerClear {
+    border: solid 2px #eccc68;
+    color: #eccc68;
+}
+
+#btnSearchCustomerClear:hover {
+    background-color: #eccc68;
+    box-shadow: 0px 15px 20px #b29d63;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnCustomer {
+    width: auto;
+    border: solid 2px #000000;
+    color: #000000;
+}
+
+#btnCustomer:hover {
+    background-color: #000000;
+    box-shadow: 0px 15px 20px #646161;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnUpdateCustomer {
+    border: solid 2px #2EE59D;
+    color: #2EE59D;
+}
+
+#btnUpdateCustomer:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px #59b797;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnDeleteCustomer {
+    border: solid 2px #ff6b81;
+    color: #ff6b81;
+}
+
+#btnDeleteCustomer:hover {
+    background-color: #ff6b81;
+    box-shadow: 0px 15px 20px rgba(191, 64, 64, 0.4);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnClear {
+    border: solid 2px #eccc68;
+    color: #eccc68;
+}
+
+#btnClear:hover {
+    background-color: #eccc68;
+    box-shadow: 0px 15px 20px #b29d63;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#delete-btn {
+    margin-bottom: 8px;
+    background-color: #ff4757;
+}
+
+.customer-container {
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px;
+}
+
+#txtSearchCustomer {
+    box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px;
+}
+
+thead {
+    background: linear-gradient(to right, #805a4d, #332d2d);
+    font-weight: bolder!important;
+}
+
+#tblCustomer tbody > tr:hover * {
+    font-weight: bold;
+    color: rgb(54, 49, 49);
+}
+
+/*end customer*/
+
+/*start item*/
+#itemForm {
+    margin: 15px;
+}
+
+.btn-modern {
+    width: 91px;
+    height: 38px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease 0s;
+    outline: none !important;
+}
+
+#btnSearchItem {
+    border: solid 2px #70a1ff;
+    color: #70a1ff;
+}
+
+#btnSearchItem:hover {
+    background-color: #70a1ff;
+    box-shadow: 0px 15px 20px #6e82bd;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnAllItem {
+    width: 170px;
+    border: solid 2px #a55eea;
+    color: #a55eea;
+}
+
+#btnAllItem:hover {
+    background-color: #a55eea;
+    box-shadow: 0px 15px 20px #a074d5;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnSearchItemClear {
+    border: solid 2px #eccc68;
+    color: #eccc68;
+}
+
+#btnSearchItemClear:hover {
+    background-color: #eccc68;
+    box-shadow: 0px 15px 20px #b29d63;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnItem {
+    width: auto;
+    border: solid 2px #000000;
+    color: #000000;
+}
+
+#btnItem:hover {
+    background-color: #000000;
+    box-shadow: 0px 15px 20px #646161;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnUpdateItem {
+    border: solid 2px #2EE59D;
+    color: #2EE59D;
+}
+
+#btnUpdateItem:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px #59b797;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnDeleteItem {
+    border: solid 2px #ff6b81;
+    color: #ff6b81;
+}
+
+#btnDeleteItem:hover {
+    background-color: #ff6b81;
+    box-shadow: 0px 15px 20px rgba(191, 64, 64, 0.4);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnClear {
+    border: solid 2px #eccc68;
+    color: #eccc68;
+}
+
+#btnClear:hover {
+    background-color: #eccc68;
+    box-shadow: 0px 15px 20px #b29d63;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#delete-btn {
+    margin-bottom: 8px;
+    background-color: #ff4757;
+}
+
+.item-container {
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px;
+}
+
+#txtSearchItem {
+    box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px;
+}
+
+thead {
+    background: linear-gradient(to right, #805a4d, #332d2d);
+}
+
+#itemTblContainer {
+    font-weight: normal !important;
+}
+
+#tblItem tbody > tr:hover * {
+    /*font-weight: bold;*/
+    color: rgb(54, 49, 49);
+}
+
+/*end item*/
+
+/*start placeOrder*/
+#btnPlaceOrder {
+    width: max-content;
+    border: solid 2px #2EE59D;
+    color: #2EE59D;
+}
+
+#btnPlaceOrder:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px #59b797;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#btnAddCart {
+    width: max-content;
+    border: solid 2px #eccc68;
+    color: #eccc68;
+}
+
+#btnAddCart:hover {
+    background-color: #eccc68;
+    box-shadow: 0px 15px 20px #b29d63;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/*end placeOrder*/

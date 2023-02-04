@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POS System | Item Form</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap for Style -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="container-fluid">
+
+<header id="headerBar" class="row">
+
+    <nav class="navbar navbar-expand-lg border-bottom shadow-lg sticky-top navbar-dark"
+         style="background-color: #232121">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-size: 18px; color: #A87E5A;">
+                <!-- navbar image setup -->
+                <img alt="" src="assets/img/favicon.png"
+                     style="width: 70px;height: 58px;position: absolute;left: 0;top: 0;"><span
+                    style="font-size: 20px; font-weight: bolder; color: #f0f0f0; margin-left: 46px;">YᑌᗰᗰY</span> treats</a>
+            <!--Toggle button-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i
+                                class="bi bi-house-fill"></i>
+                            Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./customer.html"><i
+                                class="bi bi-people-fill"></i> Customers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./item.html"><i
+                                class="bi bi-handbag-fill"></i> Items</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./order.html"><i
+                                class="bi bi-cart-check-fill"></i> Orders</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./orderDetails.html"><i
+                                class="bi bi-card-checklist"></i> Orders
+                            Details</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav me-6 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-plus-fill"></i>
+                            Sign Up</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-box-arrow-right"></i>
+                            Log Out</a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<main class="row mx-3">
+    <section class="col-12 mb-4">
+        <div class="row">
+            <div id="display"
+                 style="background: linear-gradient(to right, #000000, #b88962);box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px!important;"
+                 class="p-1 px-3 col rounded-3 fw-bolder bg-secondary text-light fs-3 mt-4 shadow-sm"><i
+                    class="fas fa-user-edit me-2"></i>Manage Item
+            </div>
+        </div>
+    </section>
+
+    <section class="col-12 row">
+        <section class="col-xl-7 ps-4">
+            <section class="col-12 mt-4 mb-5">
+                <form id="customizedForm" class="row g-3">
+                    <div class="col-xl-6 col-lg-12">
+                        <input type="search" class="form-control rounded-pill" id="txtSearchItem"
+                               placeholder="Search Item">
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnAllItem" class="btn-modern" type="button">Get
+                            All Items
+                        </button>
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnSearchItem" type="button" class="btn-modern">Search</button>
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnSearchItemClear" type="button" class="btn-modern">Clear</button>
+                    </div>
+                </form>
+            </section>
+            <!--            style="height: 25.5rem; overflow: auto"-->
+            <section>
+                <div class="col-12 d-flex rounded-2 shadow overflow-auto">
+                    <!--Item Table-->
+                    <table class="table table-hover" id="itemTblContainer">
+                        <!--Table head-->
+                        <thead class="text-white card-header-tabs table-responsive sticky-top">
+                        <!--Table head row-->
+                        <tr>
+                            <!--Table headings-->
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Item Qty</th>
+                            <th>Item Price</th>
+                        </tr>
+                        </thead>
+                        <tr id="loader" style="display: none;text-align: center">
+                            <td colspan="4">
+                                <h1>Loading..!</h1>
+                            </td>
+                        </tr>
+                        <!--Table body-->
+                        <tbody id="tblItem">
+                        <!--Table data row-->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <!--Item Manage Form-->
+        <section class="col-xl-5 row justify-content-xl-end d-grid gap-2 d-md-flex justify-content-sm-center">
+            <section class="col-8 border item-container mt-3 mb-3">
+                <form id="itemForm">
+                    <div style="display: inline-block" class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button id="btnClear" type="button" class="btn-modern">Clear
+                        </button>
+                    </div>
+                    <div style="display: inline-block" class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnDeleteItem" class="btn-modern" type="button">
+                            Delete
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtItemCode" class="form-label">Item Code</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" readonly id="txtItemCode"
+                               aria-describedby="idHelp" placeholder="Eg :- I00-001" name="code">
+                        <small class="control-error text-danger" id="lblItemID"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtItemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtItemName"
+                               aria-describedby="nameHelp" placeholder="Eg :- Pizza" name="description">
+                        <small class="control-error text-danger" id="lblItemName"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtItemQty" class="form-label">Item Qty</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtItemQty"
+                               aria-describedby="addressHelp" placeholder="Eg :- 100"
+                               name="qtyOnHand">
+                        <small class="control-error text-danger" id="lblItemAddress"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtItemPrice" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtItemPrice"
+                               aria-describedby="salaryHelp"
+                               placeholder="Eg :- 200 or 250.00" name="unitPrice">
+                        <small class="control-error text-danger" id="lblItemSalary"></small>
+                    </div>
+                    <div style="display: inline-block" class="me-2">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnItem" class="btn-modern"
+                                type="button">+New Item
+                        </button>
+                    </div>
+                    <div style="display: inline-block" class="me-2">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnUpdateItem" class="btn-modern"
+                                type="button">
+                            Update
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </section>
+</main>
+
+<!-- Bootstrap for JS -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- jQuery for JS -->
+<script src="assets/jQuery/jquery-3.6.1.min.js"></script>
+
+<!-- Swal CDN link -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Item JS -->
+<!--<script src="assets/js/item.js"></script>-->
+
+<script>
+    let baseUrl = "http://localhost:8080/BackEnd/";//Back end එකේ location URL එක.
+
+    // load all items from the database
+    getAllItems();
+
+    // disabled addCustomer button and updateCustomer button
+    $("#btnItem").attr('disabled', true);
+    $("#btnUpdateItem").attr('disabled', true);
+
+    // default submit false
+    $(function () {
+        $("#customizedForm").submit(function () {
+            return false;
+        });
+    });
+
+    // Button Events Start
+    // add item
+    $("#btnItem").on('click', function () {
+        let formData = $("#itemForm").serialize();
+        $.ajax({
+            url: baseUrl + "item",
+            method: "post",
+            data: formData,
+            dataType: "json", //මේ විදහට string එකක් browser එකට JSON එකක් විදිහට introduced කරන්න පුලුවන් data type එකෙන් response එකට විතරක් use කරන්න පුලුවන්. ඒකෙන් කරන්නේ directly response object එක JSON.parse එකට දාලා parse කරලා දෙන එක. (Response Header එකක් දාන්න පුලුවන් contentType කියලා ඊට අමතරව)
+            success: function (res) { //valid json එකක් ආවේ නැත්නම් run වෙන්නේ නෑ.
+                // invoked if the response status code is in 200 range
+                getAllItems();
+                alert(res.message);
+                loadAllItemsForOption();
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;//error object එකේ තියෙන responseText
+                alert(message);
+            }
+        });
+    });
+
+    // delete item
+    $("#btnDeleteItem").on('click', function () {
+        let code = $("#txtItemCode").val();
+        $.ajax({
+            url: baseUrl + "item?code=" + code,
+            method: "delete",
+            success: function (resp) {
+                // invoked if the response status code is in 200 range
+                getAllItems();
+                alert(resp.message);
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    });
+
+    // update item
+    $("#btnUpdateItem").on('click', function () {
+        let itemCode = $("#txtItemCode").val();
+        let itemName = $("#txtItemName").val();
+        let itemQty = $("#txtItemQty").val();
+        let itemPrice = $("#txtItemPrice").val();
+
+        var itemOb = {
+            code: itemCode,
+            description: itemName,
+            qtyOnHand: itemQty,
+            unitPrice: itemPrice
+        }
+
+        $.ajax({
+            url: baseUrl + "item",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(itemOb),
+            dataType: "json",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                getAllItems();
+                alert(res.message);
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    });
+
+    // get all item
+    $("#btnAllItem").on('click', function () {
+        getAllItems();
+    });
+
+    // clear item form data
+    $("#btnClear").on('click', function () {
+        setTextFieldValues("", "", "");
+        getAllItems();
+    })
+
+    // search item using press ENTER
+    $("#txtSearchItem").on('keyup', function (event) {
+        if (event.code === "Enter") {
+            searchItem();
+        }
+    });
+
+    // search item using search item button
+    $("#btnSearchItem").on('click', function () {
+        searchItem();
+    });
+
+    // search item clear
+    $("#btnSearchItemClear").on('click', function () {
+        getAllItems();
+        setTextFieldValues("", "", "", "");
+        $("#txtSearchItem").val("");
+    })
+    // Button Events End
+
+    // Functions Start
+    // search item function
+    function searchItem() {
+        $("#tblItem").empty();
+        let itemCode = $("#txtSearchItem").val();
+        $.ajax({
+            url: baseUrl + "item",
+            dataType: "json",
+            async: false,
+            success: function (res) {
+                for (var s of res.data) {
+                    if (itemCode.trim() === s.code) {
+                        $("#tblItem").append(`<tr><th>${s.code}</th><th>${s.description}</th><th>${s.qtyOnHand}</th><th>${s.unitPrice}</th></tr>`);
+                        bindRowClickEvents();
+                        return;
+                    }
+                }
+                if (itemCode.trim() !== s.code) {
+                    getAllItems();
+                    $("#txtSearchItem").val("");
+                    setTextFieldValues("", "", "", "");
+                    alert("There is no item available for that " + itemCode);
+                }
+            }
+        });
+    }
+
+    // get all item function
+    function getAllItems() {
+        $("#tblItem").empty();
+        $.ajax({
+            url: baseUrl + "item",//දාපු baseUrl එක append කරනවා
+            success: function (res) {
+                if ($("#txtSearchItem").val() === "") {
+                    console.log(res);
+                    $("#tblItem").empty();
+                    for (let t of res.data) {
+                        $("#tblItem").append(`<tr><th>${t.code}</th><th>${t.description}</th><th>${t.qtyOnHand}</th><th>${t.unitPrice}</th></tr>`)
+                    }
+
+                    if ($("#tblItem").children(":last-child").children(":first-child").text() === "") {
+                        $("#txtItemCode").val("I00-001");
+                    } else {
+                        var lastId = $("#tblItem").children(":last-child").children(":first-child").text();
+                        var digit = lastId.substring(6);
+                        var number = parseInt(digit) + 1;
+                    }
+
+                    bindRowClickEvents();
+                    setTextFieldValues("", "", "", "");
+                    $("#txtItemCode").val(lastId.replace(digit, number));
+                } else {
+                    searchItem();
+                }
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    // bind events for the table rows function
+    function bindRowClickEvents() {
+        $("#tblItem > tr").on('click', function () {
+            let code = $(this).children(":eq(0)").text();
+            let name = $(this).children(":eq(1)").text();
+            let qty = $(this).children(":eq(2)").text();
+            let unitPrice = $(this).children(":eq(3)").text();
+            // console.log(code, name, qty, unitPrice);
+
+            //setting table details values to text fields
+            $('#txtItemCode').val(code);
+            $('#txtItemName').val(name);
+            $('#txtItemQty').val(qty);
+            $('#txtItemPrice').val(unitPrice);
+
+        });
+    }
+
+    // set text fields values function
+    function setTextFieldValues(id, name, qty, unitPrice) {
+        $("#txtItemCode").val(id);
+        $("#txtItemName").val(name);
+        $("#txtItemQty").val(qty);
+        $("#txtItemPrice").val(unitPrice);
+    }
+    // Functions End
+
+    // Regex Patterns Start
+    // regex patterns
+    let regItemCode = /^(I00-)[0-9]{3,4}$/;
+    let regItemName = /^[A-z ]{3,20}$/;
+    let regItemQtyOnHand = /^[0-9]{1,3}$/;
+    let regItemPrice = /^[0-9]{1,10}$/;
+
+    // item validation array
+    let itemValidations = [];
+
+    itemValidations.push({
+        itemReg: regItemCode,
+        itemField: $('#txtItemCode'),
+        itemError: 'Item ID Pattern is Wrong : I00-001'
+    });
+    itemValidations.push({
+        itemReg: regItemName,
+        itemField: $('#txtItemName'),
+        itemError: 'Item Name Pattern is Wrong : A-z 5-20'
+    });
+    itemValidations.push({
+        itemReg: regItemQtyOnHand,
+        itemField: $('#txtItemQty'),
+        itemError: 'Item Quantity Pattern is Wrong : 100'
+    });
+    itemValidations.push({
+        itemReg: regItemPrice,
+        itemField: $('#txtItemPrice'),
+        itemError: 'Item Price Pattern is Wrong : 100 or 100.00,/'
+    });
+
+    // disable tab key of all four text fields using grouping selector in CSS
+    $("#txtItemCode, #txtItemName, #txtItemQty, #txtItemPrice").on('keydown', function (event) {
+        if (event.key === "Tab") {
+            event.preventDefault();
+        }
+    });
+
+    // grouping all fields keyup event using and call check validity function
+    $("#txtItemCode, #txtItemName, #txtItemQty, #txtItemPrice").on('keyup', function (event) {
+        checkItemValidity();
+    });
+
+    // grouping all fields blur event using and call check validity function
+    $("#txtItemCode, #txtItemName, #txtItemQty, #txtItemPrice").on('blur', function (event) {
+        checkItemValidity();
+    });
+
+    // item-id focus event
+    $("#txtItemCode").on('keydown', function (event) {
+        if (event.key === "Enter" && itemCheck(regItemCode, $("#txtItemCode"))) {
+            $("#txtItemName").focus();
+        } else {
+            focusItemText($("#txtItemCode"));
+        }
+    });
+
+    // item-name focus event
+    $("#txtItemName").on('keydown', function (event) {
+        if (event.key === "Enter" && itemCheck(regItemName, $("#txtItemName"))) {
+            focusItemText($("#txtItemQty"));
+        }
+    });
+
+    // item-quantity focus event
+    $("#txtItemQty").on('keydown', function (event) {
+        if (event.key === "Enter" && itemCheck(regItemQtyOnHand, $("#txtItemQty"))) {
+            focusItemText($("#txtItemPrice"));
+        }
+    });
+
+    // item-price focus event
+    $("#txtItemPrice").on('keydown', function (event) {
+        if (event.key === "Enter" && itemCheck(regItemPrice, $("#txtItemPrice"))) {
+            $("#btnItem").focus();
+        }
+    });
+
+    // check validity function
+    function checkItemValidity() {
+        let itemErrorCount = 0;
+        for (let itemValidation of itemValidations) {
+            if (itemCheck(itemValidation.itemReg, itemValidation.itemField)) {
+                textItemSuccess(itemValidation.itemField, "");
+            } else {
+                itemErrorCount = itemErrorCount + 1;
+                setItemTextError(itemValidation.itemField, itemValidation.itemError);
+            }
+        }
+        setItemButtonState(itemErrorCount);
+    }
+
+    // check regex pattern function
+    function itemCheck(regex, txtField) {
+        let itemInputValue = txtField.val();
+        return regex.test(itemInputValue) ? true : false;
+    }
+
+    // error text fields function
+    function setItemTextError(txtField, error) {
+        if (txtField.val().length <= 0) {
+            defaultItemText(txtField, "");
+        } else {
+            txtField.css('border', '2px solid red');
+            txtField.parent().children('small').text(error);
+        }
+    }
+
+    // success text fields function
+    function textItemSuccess(txtField, error) {
+        if (txtField.val().length <= 0) {
+            defaultItemText(txtField, "");
+        } else {
+            txtField.css('border', '2px solid green');
+            txtField.parent().children('small').text(error);
+        }
+    }
+
+    // default text fields function
+    function defaultItemText(txtField, error) {
+        txtField.css("border", "1px solid #ced4da");
+        txtField.parent().children('small').text(error);
+    }
+
+    // focus texts function
+    function focusItemText(txtField) {
+        txtField.focus();
+    }
+
+    // button state function
+    function setItemButtonState(value) {
+        if (value > 0) {
+            $("#btnItem").attr('disabled', true);
+            $("#btnUpdateItem").attr('disabled', true);
+        } else {
+            $("#btnItem").attr('disabled', false);
+            $("#btnUpdateItem").attr('disabled', false);
+        }
+    }
+    // Regex Patterns End
+</script>
+</body>
+</html>
+
+

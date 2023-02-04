@@ -1,0 +1,561 @@
+<!--Created by IntelliJ IDEA.-->
+<!--User: ShEnUx-->
+<!--Date: 12/3/2022-->
+<!--Time: 11:25 PM-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POS System | Customer Form</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap for Style -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="container-fluid">
+<header id="headerBar" class="row">
+
+    <nav class="navbar navbar-expand-lg border-bottom shadow-lg sticky-top navbar-dark"
+         style="background-color: #232121">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-size: 18px; color: #A87E5A;">
+                <!-- navbar image setup -->
+                <img alt="" src="assets/img/favicon.png"
+                     style="width: 70px;height: 58px;position: absolute;left: 0;top: 0;"><span
+                    style="font-size: 20px; font-weight: bolder; color: #f0f0f0; margin-left: 46px;">YᑌᗰᗰY</span> treats</a>
+            <!--Toggle button-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-house-fill"></i>
+                            Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./customer.html"><i
+                                class="bi bi-people-fill"></i> Customers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./item.html"><i
+                                class="bi bi-handbag-fill"></i> Items</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./order.html"><i
+                                class="bi bi-cart-check-fill"></i> Orders</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./orderDetails.html"><i
+                                class="bi bi-card-checklist"></i> Orders
+                            Details</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav me-6 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-plus-fill"></i>
+                            Sign Up</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-box-arrow-right"></i>
+                            Log Out</a>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<main class="row mx-3">
+    <section class="col-12 mb-4">
+        <div class="row">
+            <div style="background: linear-gradient(to right, #000000, #b88962);box-shadow: rgb(0 0 0 / 25%) 0 14px 28px, rgb(0 0 0 / 22%) 0 10px 10px!important;"
+                 class="p-1 px-3 col rounded-3 fw-bolder bg-secondary text-light fs-3 mt-4 shadow-sm"><i
+                    class="fas fa-user-edit me-2"></i>Manage Customer
+            </div>
+        </div>
+    </section>
+
+    <section class="col-12 row">
+        <section class="col-xl-7 ps-4">
+            <section class="col-12 mt-4 mb-5">
+                <form id="customizedCustomerForm" class="row g-3">
+                    <div class="col-xl-6 col-lg-12">
+                        <input type="search" class="form-control rounded-pill" id="txtSearchCustomer"
+                               placeholder="Search Customer">
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnAllCustomer" class="btn-modern" type="button">Get
+                            All Customers
+                        </button>
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnSearchCustomer" type="button" class="btn-modern">Search</button>
+                    </div>
+
+                    <div class="col-1" style="width: max-content">
+                        <button id="btnSearchCustomerClear" type="button" class="btn-modern">Clear</button>
+                    </div>
+                </form>
+            </section>
+            <!--            style="height: 25.5rem; overflow: auto"-->
+            <section>
+                <div class="col-12 d-flex rounded-2 shadow overflow-auto">
+                    <!--Customer Table-->
+                    <table class="table table-hover">
+                        <!--Table head-->
+                        <thead class="text-white card-header-tabs table-responsive sticky-top">
+                        <!--Table head row-->
+                        <tr>
+                            <th>Customer ID</th> <!--Table heading-->
+                            <th>Customer Name</th>
+                            <th>Address</th>
+                            <th>Salary</th>
+                        </tr>
+                        </thead>
+                        <!--Table body-->
+                        <tbody id="tblCustomer">
+                        <!--Table data row-->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <!--Customer Manage Form-->
+        <section class="col-xl-5 row justify-content-xl-end d-grid gap-2 d-md-flex justify-content-sm-center">
+            <section class="col-8 border customer-container mt-3 mb-3">
+                <form id="customerForm">
+                    <div style="display: inline-block" class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button id="btnClear" type="button" class="btn-modern">Clear
+                        </button>
+                    </div>
+                    <div style="display: inline-block" class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnDeleteCustomer" class="btn-modern"
+                                type="button">
+                            Delete
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtCustomerID" class="form-label">Customer ID</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" readonly id="txtCustomerID"
+                               aria-describedby="idHelp" placeholder="Eg :- C00-001" name="id">
+                        <small class="control-error text-danger" id="lblCusID"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtCustomerName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtCustomerName"
+                               aria-describedby="nameHelp" placeholder="Eg :- Pahasara" name="name">
+                        <small class="control-error text-danger" id="lblCusName"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtCustomerAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtCustomerAddress"
+                               aria-describedby="addressHelp" placeholder="Eg :- N0/02, Godahena Watta, Galle"
+                               name="address">
+                        <small class="control-error text-danger" id="lblCusAddress"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtCustomerSalary" class="form-label">Salary</label>
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtCustomerSalary"
+                               aria-describedby="salaryHelp"
+                               placeholder="Eg :- 200 or 250.00" name="salary">
+                        <small class="control-error text-danger" id="lblCusSalary"></small>
+                    </div>
+                    <div style="display: inline-block" class="me-2">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnCustomer" class="btn-modern"
+                                type="button">+New Customer
+                        </button>
+                    </div>
+                    <div style="display: inline-block" class="me-2">
+                        <button style="margin-bottom: 8px;margin-top: 8px;" id="btnUpdateCustomer" class="btn-modern"
+                                type="button">
+                            Update
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </section>
+</main>
+
+<!-- Bootstrap for JS -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- jQuery for JS -->
+<script src="assets/jQuery/jquery-3.6.1.min.js"></script>
+
+<!-- Swal CDN link -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Customer JS -->
+
+<script>
+    let baseUrl = "http://localhost:8080/BackEnd/";//Back end එකේ location URL එක.
+
+    // load all customers from the database
+    getAllCustomers();
+
+    // disabled addCustomer button and updateCustomer button
+    $("#btnCustomer").attr('disabled', true);
+    $("#btnUpdateCustomer").attr('disabled', true);
+
+    // default submit false
+    $(function () {
+        $("#customizedCustomerForm").submit(function () {
+            return false;
+        });
+    });
+
+    // Button Events Start
+    // add customer
+    $("#btnCustomer").on('click', function () {
+        let formData = $("#customerForm").serialize();
+        $.ajax({
+            url: baseUrl + "customer",
+            method: "post",
+            data: formData,
+            dataType: "json", //මේ විදහට string එකක් browser එකට JSON එකක් විදිහට introduced කරන්න පුලුවන් data type එකෙන් response එකට විතරක් use කරන්න පුලුවන්. ඒකෙන් කරන්නේ directly response object එක JSON.parse එකට දාලා parse කරලා දෙන එක. (Response Header එකක් දාන්න පුලුවන් contentType කියලා ඊට අමතරව)
+            success: function (res) { //valid json එකක් ආවේ නැත්නම් run වෙන්නේ නෑ.
+                // invoked if the response status code is in 200 range
+                getAllCustomers();
+                alert(res.message);
+                loadAllCustomersForOption()
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;//error object එකේ තියෙන responseText
+                alert(message);
+            }
+        });
+    });
+
+    // delete customer
+    $("#btnDeleteCustomer").on('click', function () {
+        let id = $("#txtCustomerID").val();
+        $.ajax({
+            url: baseUrl + "customer?id=" + id,
+            method: "delete",
+            success: function (resp) {
+                // invoked if the response status code is in 200 range
+                getAllCustomers();
+                alert(resp.message);
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    });
+
+    // update customer
+    $("#btnUpdateCustomer").on('click', function () {
+        let cusId = $("#txtCustomerID").val();
+        let cusName = $("#txtCustomerName").val();
+        let cusAddress = $("#txtCustomerAddress").val();
+        let cusSalary = $("#txtCustomerSalary").val();
+
+        var customerOb = {
+            id: cusId,
+            name: cusName,
+            address: cusAddress,
+            salary: cusSalary
+        }
+
+        $.ajax({
+            url: baseUrl + "customer",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(customerOb),
+            dataType: "json",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                getAllCustomers();
+                alert(res.message);
+            },
+            error: function (error) {
+                // invoked if status code range is 500 range or 400 range
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    });
+
+    // get all customer
+    $("#btnAllCustomer").on('click', function () {
+        getAllCustomers();
+    });
+
+    // clear customer form data
+    $("#btnClear").on('click', function () {
+        setTextFieldValues("", "", "");
+        getAllCustomers();
+    })
+
+    // search customer using press ENTER
+    $("#txtSearchCustomer").on('keyup', function (event) {
+        if (event.code === "Enter") {
+            searchCustomer();
+        }
+    });
+
+    // search customer using search customer button
+    $("#btnSearchCustomer").on('click', function () {
+        searchCustomer();
+    });
+
+    // search customer clear
+    $("#btnSearchCustomerClear").on('click', function () {
+        getAllCustomers();
+        setTextFieldValues("", "", "", "");
+        $("#txtSearchCustomer").val("");
+    })
+    // Button Events End
+
+    // Functions Start
+    // search customer function
+    function searchCustomer() {
+        $("#tblCustomer").empty();
+        let customerID = $("#txtSearchCustomer").val();
+        $.ajax({
+            url: baseUrl + "customer",
+            dataType: "json",
+            async: false,
+            success: function (res) {
+                for (var c of res.data) {
+                    if (customerID.trim() === c.id) {
+                        $("#tblCustomer").append(`<tr><th>${c.id}</th><th>${c.name}</th><th>${c.address}</th><th>${c.salary}</th></tr>`);
+                        bindRowClickEvents();
+                        return;
+                    }
+                }
+                if (customerID.trim() !== c.id) {
+                    getAllCustomers();
+                    $("#txtSearchCustomer").val("")
+                    setTextFieldValues("", "", "", "");
+                    alert("There is no customer available for that " + customerID);
+                }
+            }
+        });
+    }
+
+    // get all customer function
+    function getAllCustomers() {
+        $("#tblCustomer").empty();
+        $.ajax({
+            url: baseUrl + "customer",//දාපු baseUrl එක append කරනවා
+            success: function (res) {
+                if ($("#txtSearchCustomer").val() === "") {
+                    console.log(res);
+                    for (let c of res.data) {
+                        $("#tblCustomer").append(`<tr><td>${c.id}</td><td>${c.name}</td><td>${c.address}</td><td>${c.salary}</td></tr>`)
+                    }
+
+                    if ($("#tblCustomer").children(":last-child").children(":first-child").text() === "") {
+                        $("#txtCustomerID").val("C00-001");
+                    } else {
+                        var lastId = $("#tblCustomer").children(":last-child").children(":first-child").text();
+                        var digit = lastId.substring(6);
+                        var number = parseInt(digit) + 1;
+                    }
+                    bindRowClickEvents();
+                    setTextFieldValues("", "", "");
+                    $("#txtCustomerID").val(lastId.replace(digit, number));
+                } else {
+                    searchCustomer();
+                }
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    // bind events for the table rows function
+    function bindRowClickEvents() {
+        $("#tblCustomer > tr").on('click', function () {
+            let id = $(this).children(":eq(0)").text();
+            let name = $(this).children(":eq(1)").text();
+            let address = $(this).children(":eq(2)").text();
+            let salary = $(this).children(":eq(3)").text();
+            // console.log(id, name, address, salary);
+
+            //setting table details values to text fields
+            $('#txtCustomerID').val(id);
+            $('#txtCustomerName').val(name);
+            $('#txtCustomerAddress').val(address);
+            $('#txtCustomerSalary').val(salary);
+
+        });
+    }
+
+    // set text fields values function
+    function setTextFieldValues(name, address, salary) {
+        $("#txtCustomerName").val(name);
+        $("#txtCustomerAddress").val(address);
+        $("#txtCustomerSalary").val(salary);
+    }
+    // Functions End
+
+    // Regex Patterns Start
+    // regex patterns
+    let regCusID = /^(C00-)[0-9]{3,4}$/;
+    let regCusName = /^[A-z ]{3,20}$/;
+    let regCusAddress = /^[A-z0-9/ ]{6,30}$/;
+    let regCusSalary = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+
+    // customer validation array
+    let customerValidations = [];
+
+    customerValidations.push({
+        reg: regCusID,
+        field: $('#txtCustomerID'),
+        error: 'Customer ID Pattern is Wrong : C00-001'
+    });
+    customerValidations.push({
+        reg: regCusName,
+        field: $('#txtCustomerName'),
+        error: 'Customer Name Pattern is Wrong : A-z 5-20'
+    });
+    customerValidations.push({
+        reg: regCusAddress,
+        field: $('#txtCustomerAddress'),
+        error: 'Customer Address Pattern is Wrong : A-z 0-9 ,/'
+    });
+    customerValidations.push({
+        reg: regCusSalary,
+        field: $('#txtCustomerSalary'),
+        error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
+    });
+
+    // disable tab key of all four text fields using grouping selector in CSS
+    $("#txtCustomerID, #txtCustomerName, #txtCustomerAddress, #txtCustomerSalary").on('keydown', function (event) {
+        if (event.key === "Tab") {
+            event.preventDefault();
+        }
+    });
+
+    // grouping all fields keyup event using and call check validity function
+    $("#txtCustomerID, #txtCustomerName, #txtCustomerAddress, #txtCustomerSalary").on('keyup', function (event) {
+        checkValidity();
+    });
+
+    // grouping all fields blur event using and call check validity function
+    $("#txtCustomerID, #txtCustomerName, #txtCustomerAddress, #txtCustomerSalary").on('blur', function (event) {
+        checkValidity();
+    });
+
+    // customer-id focus event
+    $("#txtCustomerID").on('keydown', function (event) {
+        if (event.key === "Enter" && check(regCusID, $("#txtCustomerID"))) {
+            $("#txtCustomerName").focus();
+        } else {
+            focusText($("#txtCustomerID"));
+        }
+    });
+
+    // customer-name focus event
+    $("#txtCustomerName").on('keydown', function (event) {
+        if (event.key == "Enter" && check(regCusName, $("#txtCustomerName"))) {
+            focusText($("#txtCustomerAddress"));
+        }
+    });
+
+    // customer-address focus event
+    $("#txtCustomerAddress").on('keydown', function (event) {
+        if (event.key === "Enter" && check(regCusAddress, $("#txtCustomerAddress"))) {
+            focusText($("#txtCustomerSalary"));
+        }
+    });
+
+    // customer-salary focus event
+    $("#txtCustomerSalary").on('keydown', function (event) {
+        if (event.key === "Enter" && check(regCusSalary, $("#txtCustomerSalary"))) {
+            $("#btnCustomer").focus();
+        }
+    });
+
+    // check validity function
+    function checkValidity() {
+        let errorCount = 0;
+        for (let validation of customerValidations) {
+            if (check(validation.reg, validation.field)) {
+                textSuccess(validation.field, "");
+            } else {
+                errorCount = errorCount + 1;
+                setTextError(validation.field, validation.error);
+            }
+        }
+        setButtonState(errorCount);
+    }
+
+    // check regex pattern function
+    function check(regex, txtField) {
+        let inputValue = txtField.val();
+        return regex.test(inputValue) ? true : false;
+    }
+
+    // error text fields function
+    function setTextError(txtField, error) {
+        if (txtField.val().length <= 0) {
+            defaultText(txtField, "");
+        } else {
+            txtField.css('border', '2px solid red');
+            txtField.parent().children('small').text(error);
+        }
+    }
+
+    // success text fields function
+    function textSuccess(txtField, error) {
+        if (txtField.val().length <= 0) {
+            defaultText(txtField, "");
+        } else {
+            txtField.css('border', '2px solid green');
+            txtField.parent().children('small').text(error);
+        }
+    }
+
+    // default text fields function
+    function defaultText(txtField, error) {
+        txtField.css("border", "1px solid #ced4da");
+        txtField.parent().children('small').text(error);
+    }
+
+    // focus texts function
+    function focusText(txtField) {
+        txtField.focus();
+    }
+
+    // button state function
+    function setButtonState(value) {
+        if (value > 0) {
+            $("#btnCustomer").attr('disabled', true);
+            $("#btnUpdateCustomer").attr('disabled', true);
+        } else {
+            $("#btnCustomer").attr('disabled', false);
+            $("#btnUpdateCustomer").attr('disabled', false);
+        }
+    }
+    // Regex Patterns End
+</script>
+</body>
+</html>
