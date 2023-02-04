@@ -46,10 +46,10 @@ public class JController {
     //Request headers that we want to set if we want to invoke this method
     //Content-Type = application/json
     //Accept = text/html
-    @GetMapping(produces = {MediaType.TEXT_HTML_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public String testTwo() {
-        return "Method Two Invoked";
-    }
+//    @GetMapping(produces = {MediaType.TEXT_HTML_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public String testTwo() {
+//        return "Method Two Invoked";
+//    }
 
     //Request headers that we want to set if we want to invoke this method
     //Content-Type = application/json

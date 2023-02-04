@@ -37,17 +37,17 @@ public class IController {
     //Content-Type = consume header එක නැති නිසා ඕන්නෑ.
     //Accept = application/json
     //produces එකෙන් කරන්නේ මෙතන method එකෙන් return කරන්න response එකේ තියෙන content type එක මොකක්ද කියලා specify කරන එක.
-    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})//මෙ method එක කවුරු හරි invoked කරොත් මෙතනින් produces කරන්නේ මේ MediaType.APPLICATION_JSON_VALUE type එකේ content එකක් කියලා.
-    public String testOne() {
-        return "Method One Invoked";
-    }
+//    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})//මෙ method එක කවුරු හරි invoked කරොත් මෙතනින් produces කරන්නේ මේ MediaType.APPLICATION_JSON_VALUE type එකේ content එකක් කියලා.
+//    public String testOne() {
+//        return "Method One Invoked";
+//    }
 
 
     //Request headers that we want to set if we want to invoke this method
     //Content-Type = application/json
     //Accept = text/html
-    @GetMapping(produces = {MediaType.TEXT_HTML_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public String testTwo() {
-        return "Method Two Invoked";
-    }
+//    @GetMapping(produces = {MediaType.TEXT_HTML_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+//    public String testTwo() {
+//        return "Method Two Invoked";
+//    }
 }

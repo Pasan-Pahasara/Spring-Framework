@@ -155,7 +155,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="txtCustomerID" class="form-label">Customer ID</label>
-                        <input type="text" class="form-control prevent_tab_key_focus" readonly id="txtCustomerID"
+                        <input type="text" class="form-control prevent_tab_key_focus" id="txtCustomerID"
                                aria-describedby="idHelp" placeholder="Eg :- C00-001" name="id">
                         <small class="control-error text-danger" id="lblCusID"></small>
                     </div>
@@ -208,7 +208,7 @@
 <!-- Customer JS -->
 
 <script>
-    let baseUrl = "http://localhost:8080/BackEnd/";//Back end එකේ location URL එක.
+    let baseUrl = "http://localhost:8080/mapping/";//Back end එකේ location URL එක.
 
     // load all customers from the database
     getAllCustomers();
