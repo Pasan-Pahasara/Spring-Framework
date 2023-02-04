@@ -3,6 +3,8 @@ package lk.ijse.spring.controller;
 import lk.ijse.spring.dto.CustomerDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 /**
  * @author : ShEnUx
  * @time : 11:15 AM
@@ -26,8 +28,20 @@ public class LController {
 
 
     //Let's Handle a JSON request with Spring
+//    @PutMapping
+//    public void updateCustomer(@RequestBody CustomerDTO dto){
+//        System.out.println(dto.toString());
+//    }
+//    @PutMapping
+//    public CustomerDTO updateCustomer(@RequestBody CustomerDTO dto){
+//        return dto;//Json Object return කරන්න පුලුවන්.
+//    }
     @PutMapping
-    public void updateCustomer(@RequestBody CustomerDTO dto){
-        System.out.println(dto.toString());
+    public ArrayList<CustomerDTO> updateCustomer(@RequestBody CustomerDTO dto){
+        ArrayList<CustomerDTO> allCustomers = new ArrayList<>();
+        allCustomers.add(new CustomerDTO("C00-001","Ravindu","Galle",25000.00));
+        allCustomers.add(new CustomerDTO("C00-002","Nimesh","Mathara",35000.00));
+        allCustomers.add(new CustomerDTO("C00-003","Maneesha","Panadura",50000.00));
+        return allCustomers;
     }
 }
