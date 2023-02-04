@@ -11,3 +11,4 @@ lk.ijse.spring.controller.HController=org.springframework.stereotype.Component
 lk.ijse.spring.controller.IController=org.springframework.stereotype.Component
 lk.ijse.spring.controller.JController=org.springframework.stereotype.Component
 lk.ijse.spring.controller.KController=org.springframework.stereotype.Component
+lk.ijse.spring.controller.LController=org.springframework.stereotype.Component
