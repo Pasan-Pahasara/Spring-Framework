@@ -8,6 +8,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/_14_Spring_With_Maven/pom.xml" />
+        <option value="$PROJECT_DIR$/14_Spring_With_Maven/pom.xml" />
       </list>
     </option>
   </component>
