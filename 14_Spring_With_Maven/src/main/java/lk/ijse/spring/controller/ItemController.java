@@ -2,6 +2,7 @@ package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.ItemDTO;
 import lk.ijse.spring.util.ResponseUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,10 +23,11 @@ public class ItemController {
      * @RequestBody (State that the parameter is going to inject values from JSON object) (required annotation)
      */
 
+    @ResponseStatus(HttpStatus.CREATED)//ResponseStatus එකක් අපිට දෙන්න පුලුවන් වෙනම.
     @PostMapping
     public ResponseUtil saveItem(@ModelAttribute ItemDTO itemDTO){
         System.out.println("Save Item Invoked"+itemDTO.toString());
-        return new ResponseUtil("OK","Successfully Registered..!",null);
+        return new ResponseUtil("OK","Successfully Registered..!",null);//Object return කරන්න නම් අනිවාර්‍යෙන්ම Jackson හරි මොකක්ම හරි converter එක දාලා තියන්න ඕන. නැත්තම් error එන්නේ.
     }
 
     @DeleteMapping(params = {"code"})
