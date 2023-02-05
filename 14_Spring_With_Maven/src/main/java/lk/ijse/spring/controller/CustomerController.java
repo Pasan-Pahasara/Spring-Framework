@@ -25,6 +25,9 @@ public class CustomerController {
     @PostMapping
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customerDTO){
         System.out.println("Save Customer Invoked"+customerDTO.toString());
+        if (customerDTO.getId().equals("C00-001")){
+            throw new RuntimeException("Customer Already Exist. Please enter another id..!");
+        }
         return new ResponseUtil("OK","Successfully Registered..!",null);
     }
 
@@ -34,11 +37,17 @@ public class CustomerController {
 //    }
     @DeleteMapping(params = {"id"})
     public ResponseUtil deleteCustomer(@RequestParam String id){
+        if (id.equals("C00-001")){
+            throw new RuntimeException("Wrong ID..Please enter valid id..!");
+        }
         return new ResponseUtil("OK","Successfully Deleted..! : "+id,null);
     }
 
     @PutMapping
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
+        if (customerDTO.getId().equals("C00-001")){
+            throw new RuntimeException("Wrong ID..No Such a Customer to Update..!");
+        }
         return new ResponseUtil("OK","Successfully Updated..! : "+customerDTO.getId(),null);
     }
 
