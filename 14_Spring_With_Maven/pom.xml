@@ -7,6 +7,8 @@
     <groupId>lk.ijse</groupId>
     <artifactId>14_Spring_With_Maven</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!--Web Application එකක් කියලා introduce කරන්නේ packaging වලින්.-->
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
