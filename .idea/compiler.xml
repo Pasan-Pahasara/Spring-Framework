@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="14_Spring_With_Maven" />
+        <module name="15_Spring_Data_JPA" />
       </profile>
     </annotationProcessing>
   </component>
