@@ -1,7 +1,9 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.util.ResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 @CrossOrigin
 @RequestMapping("/customer")
 public class CustomerController {
+   @Autowired
+    private CustomerRepo repo;
     /**
      * @RequestParam (query string,x-www-form-url-encoded) (not required) important(query String)
      * @ModelAttribute (query string,x-www-form-url-encoded) (not required) important(x-www-form-url-encoded මේකටම formData කියනවා.)
