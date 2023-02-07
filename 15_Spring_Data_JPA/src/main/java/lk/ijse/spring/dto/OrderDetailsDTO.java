@@ -5,12 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDate;
-import java.util.List;
-
 /**
  * @author : ShEnUx
- * @time : 10:09 AM
+ * @time : 10:12 AM
  * @date : 2/7/2023
  * @since : 0.1.0
  **/
@@ -18,9 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @ToString
-public class OrdersDTO {
+public class OrderDetailsDTO {
     private String oid;
-    private LocalDate date;
-    private String cusID;
-    private List<OrderDetailsDTO> orderDetails;
+    private String itemCode;
+    private int qty;
+    private double unitPrice;
 }
