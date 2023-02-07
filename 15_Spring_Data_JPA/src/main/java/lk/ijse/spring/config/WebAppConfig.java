@@ -18,8 +18,5 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan(basePackageClasses = {CustomerController.class, AppWideExceptionHandler.class})
 public class WebAppConfig {
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }
