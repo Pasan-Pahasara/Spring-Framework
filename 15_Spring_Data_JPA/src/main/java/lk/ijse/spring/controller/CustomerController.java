@@ -4,6 +4,8 @@ import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.util.ResponseUtil;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,8 @@ public class CustomerController {
     @Autowired
     private CustomerRepo repo;
 
+    @Autowired
+    private ModelMapper mapper;
     /**
      * @RequestParam (query string, x - www - form - url - encoded) (not required) important(query String)
      * @ModelAttribute (query string, x - www - form - url - encoded) (not required) important(x-www-form-url-encoded මේකටම formData කියනවා.)
@@ -35,8 +39,11 @@ public class CustomerController {
         if (repo.existsById(customerDTO.getId())) {
             throw new RuntimeException("Customer Already Exist. Please enter another id..!");
         }
-        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
-        repo.save(customer);
+        //DTO class එකක තියෙන data Entity එකකට transport කරගන්න ඕන උනොත් ඒ වැඩේ ලේසියෙන් කරන්න පුලුවන් මෙහෙම manually කරන්නේ නැතුව.
+//        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+//        Customer map = mapper.map(customerDTO, Customer.class);//Resource එක පලවෙනි parameter එකට දෙනවා. දෙවනි එකට convert වෙන්න න එක දෙනවා.
+//        repo.save(map);
+        repo.save(mapper.map(customerDTO, Customer.class));//alternative
         return new ResponseUtil("OK", "Successfully Registered..!", null);
     }
 
@@ -58,15 +65,17 @@ public class CustomerController {
         if (!repo.existsById(customerDTO.getId())) {
             throw new RuntimeException("Wrong ID..No Such a Customer to Update..!");
         }
-        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
-        repo.save(customer);
+//        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+//        repo.save(customer);
+        repo.save(mapper.map(customerDTO, Customer.class));
         return new ResponseUtil("OK", "Successfully Updated..! : " + customerDTO.getId(), null);
     }
 
     @GetMapping
     public ResponseUtil getAllCustomers() {
-        ArrayList<CustomerDTO> arrayList = new ArrayList<>();
-        List<Customer> all = repo.findAll();
-        return new ResponseUtil("OK", "Successfully Loaded..!", all);
+//        List<Customer> all = repo.findAll();
+//        ArrayList<CustomerDTO> customerDTOArrayList = mapper.map(all, new TypeToken<ArrayList<CustomerDTO>>() {}.getType());//List එක convert කරනවා DTO එකකට.TypeToken class එකේ generics වලට දෙනවා CustomerDTO type එකේ ArrayList එකක්.
+        ArrayList<CustomerDTO> customerDTOArrayList = mapper.map(repo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {}.getType());//alternative
+        return new ResponseUtil("OK", "Successfully Loaded..!", customerDTOArrayList);
     }
 }
