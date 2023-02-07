@@ -1,6 +1,7 @@
 package lk.ijse.spring.config;
 
 import lk.ijse.spring.repo.CustomerRepo;
+import lk.ijse.spring.repo.ItemRepo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -24,7 +25,7 @@ import javax.sql.DataSource;
  **/
 @Configuration
 @EnableTransactionManagement//මේකෙන් තමයි Transaction Management එක automatically වෙන්නේ.(අපට Transaction එක තියෙන තැන පෙන්නලා දෙන්න විතරයි තීන්නේ.) AOP use කරනවා.
-@EnableJpaRepositories(basePackageClasses = {CustomerRepo.class})
+@EnableJpaRepositories(basePackageClasses = {CustomerRepo.class, ItemRepo.class})
 public class JPAConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter va){
