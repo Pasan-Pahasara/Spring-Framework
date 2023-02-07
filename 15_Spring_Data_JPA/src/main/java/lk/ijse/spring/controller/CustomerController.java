@@ -1,12 +1,14 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : ShEnUx
@@ -18,52 +20,53 @@ import java.util.ArrayList;
 @CrossOrigin
 @RequestMapping("/customer")
 public class CustomerController {
-   @Autowired
+    @Autowired
     private CustomerRepo repo;
+
     /**
-     * @RequestParam (query string,x-www-form-url-encoded) (not required) important(query String)
-     * @ModelAttribute (query string,x-www-form-url-encoded) (not required) important(x-www-form-url-encoded මේකටම formData කියනවා.)
+     * @RequestParam (query string, x - www - form - url - encoded) (not required) important(query String)
+     * @ModelAttribute (query string, x - www - form - url - encoded) (not required) important(x-www-form-url-encoded මේකටම formData කියනවා.)
      * @RequestBody (State that the parameter is going to inject values from JSON object) (required annotation)
      */
 
     @PostMapping
-    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customerDTO){
-        System.out.println("Save Customer Invoked"+customerDTO.toString());
-        if (customerDTO.getId().equals("C00-001")){
+    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customerDTO) {
+        System.out.println("Save Customer Invoked" + customerDTO.toString());
+        if (repo.existsById(customerDTO.getId())) {
             throw new RuntimeException("Customer Already Exist. Please enter another id..!");
         }
-        return new ResponseUtil("OK","Successfully Registered..!",null);
+        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+        repo.save(customer);
+        return new ResponseUtil("OK", "Successfully Registered..!", null);
     }
 
-//    @DeleteMapping
+    //    @DeleteMapping
 //    public ResponseUtil deleteCustomer(String id){
 //        return new ResponseUtil("OK","Successfully Deleted..! : "+id,null);
 //    }
     @DeleteMapping(params = {"id"})
-    public ResponseUtil deleteCustomer(@RequestParam String id){
-        if (id.equals("C00-001")){
+    public ResponseUtil deleteCustomer(@RequestParam String id) {
+        if (!repo.existsById(id)) {
             throw new RuntimeException("Wrong ID..Please enter valid id..!");
         }
-        return new ResponseUtil("OK","Successfully Deleted..! : "+id,null);
+        repo.deleteById(id);
+        return new ResponseUtil("OK", "Successfully Deleted..! : " + id, null);
     }
 
     @PutMapping
-    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
-        if (customerDTO.getId().equals("C00-001")){
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
+        if (!repo.existsById(customerDTO.getId())) {
             throw new RuntimeException("Wrong ID..No Such a Customer to Update..!");
         }
-        return new ResponseUtil("OK","Successfully Updated..! : "+customerDTO.getId(),null);
+        Customer customer = new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+        repo.save(customer);
+        return new ResponseUtil("OK", "Successfully Updated..! : " + customerDTO.getId(), null);
     }
 
     @GetMapping
-    public ResponseUtil getAllCustomers(){
+    public ResponseUtil getAllCustomers() {
         ArrayList<CustomerDTO> arrayList = new ArrayList<>();
-        arrayList.add(new CustomerDTO("C00-001","Ushan","Mathara",10000.00));
-        arrayList.add(new CustomerDTO("C00-002","Ashan","Panadura",18000.00));
-        arrayList.add(new CustomerDTO("C00-003","Nimesh","Colombo",25000.00));
-        arrayList.add(new CustomerDTO("C00-004","Maneesha","Galle",50000.00));
-        arrayList.add(new CustomerDTO("C00-005","Sadun","Panadura",48000.00));
-
-        return new ResponseUtil("OK","Successfully Loaded..!",null);
+        List<Customer> all = repo.findAll();
+        return new ResponseUtil("OK", "Successfully Loaded..!", all);
     }
 }
