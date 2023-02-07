@@ -20,7 +20,7 @@ import java.util.List;
 @ToString
 public class OrdersDTO {
     private String oid;
-    private LocalDate date;
+    private LocalDate date;//Jackson ට තනියම String type එන data එකක් LocalDate එකට convert කරන්න බෑ ඒකට Jackson Datatype: JSR310 ත් use කරන්න ඕන.
     private String cusID;
     private List<OrderDetailsDTO> orderDetails;
 }

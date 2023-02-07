@@ -1,5 +1,6 @@
 package lk.ijse.spring.controller;
 
+import lk.ijse.spring.dto.OrdersDTO;
 import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class PurchaseOrderController {
     @PostMapping
-    public ResponseUtil purchaseOrder(@RequestBody){
+    public ResponseUtil purchaseOrder(@RequestBody OrdersDTO ordersDTO){
+        System.out.println(ordersDTO.toString());
         return new ResponseUtil("OK","Purchased Successfully ..!",null);
     }
 }

@@ -633,7 +633,7 @@
 
         let customerName = $("#cusName").val();
         let itemName = $("#iName").val();
-        let orderD = getItemDetails();
+        let orderD = getItemDetails(orderID);
 
         alert(orderD)
         let ob = {
@@ -665,14 +665,14 @@
         });
     });
 
-    function getItemDetails() {
+    function getItemDetails(orderID) {
         let rows = $("#tableAddCart").children().length;
         var array = [];
         for (let i = 0; i < rows; i++) {
             let itCode = $("#tableAddCart").children().eq(i).children(":eq(0)").text();
             let itQty = $("#tableAddCart").children().eq(i).children(":eq(3)").text();
             let itPrice = $("#tableAddCart").children().eq(i).children(":eq(2)").text();
-            array.push({code: itCode, qty: itQty, price: itPrice,});
+            array.push({oid:orderID,itemCode: itCode, qty: itQty, unitPrice: itPrice,});
         }
         return array;
     }
