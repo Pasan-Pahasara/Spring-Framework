@@ -63,4 +63,8 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     //JPQL(මේක Java Persistent Api එකෙන් introduce කරපු එක)
     @Query(value = "select u from Customer u")
     List<Customer> getCustomerWithJPQL();
+
+    //HQL(Hibernate වලින් introduce කරපු එක)
+    @Query(value = "from Customer")
+    List<Customer> getCustomerWithHQL();
 }

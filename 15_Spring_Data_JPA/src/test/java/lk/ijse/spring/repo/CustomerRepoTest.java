@@ -137,4 +137,12 @@ class CustomerRepoTest {
             System.out.println(customer);
         }
     }
+
+    @Test
+    void HQL() {
+        List<Customer> hql = repo.getCustomerWithHQL();
+        for (Customer customer : hql) {
+            System.out.println(customer);
+        }
+    }
 }
