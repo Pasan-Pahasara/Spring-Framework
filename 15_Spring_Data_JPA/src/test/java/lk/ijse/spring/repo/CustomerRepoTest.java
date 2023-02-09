@@ -97,4 +97,12 @@ class CustomerRepoTest {
         Customer c1 = repo.findCustomerByNameAndAddress("Pahasara", "Panadura");
         System.out.println(c1);
     }
+
+    @Test
+    void testAllMethods4() {
+        List<Customer> list = repo.methodOne();
+        for (Customer customer : list) {
+            System.out.println(customer);
+        }
+    }
 }
