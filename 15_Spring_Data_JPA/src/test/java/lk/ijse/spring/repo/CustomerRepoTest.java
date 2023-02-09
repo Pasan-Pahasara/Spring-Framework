@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -32,13 +34,34 @@ class CustomerRepoTest {
     CustomerRepo repo;
     @Test
     void findByName() {
-        Customer pahasara = repo.findCustomerByName("Pahasara");
-        System.out.println(pahasara);
+        List<Customer> list = repo.findByName("Pahasara");
+        for (Customer customer : list) {
+            System.out.println(customer);
+        }
     }
 
     @Test
     void findCustomerByName() {
-        Customer pahasara = repo.findCustomerByName("Pahasara");
+        Customer pahasara = repo.findCustomerByName("Nimesh");
         System.out.println(pahasara);
+    }
+    @Test
+    void testAllMethods() {
+        /**
+         * මේ හැම එකකින්ම වදින්නේ එකම query එක.
+         * */
+        Customer c1 = repo.findCustomerByName("Nimesh");
+        Customer c2 = repo.readCustomerByName("Nimesh");
+        Customer c3 = repo.getCustomerByName("Nimesh");
+        Customer c4 = repo.queryCustomerByName("Nimesh");
+        Customer c5 = repo.searchCustomerByName("Nimesh");
+        Customer c6 = repo.streamCustomerByName("Nimesh");
+        System.out.println(c1);
+        System.out.println(c2);
+        System.out.println(c3);
+        System.out.println(c4);
+        System.out.println(c5);
+        System.out.println(c5);
+
     }
 }
