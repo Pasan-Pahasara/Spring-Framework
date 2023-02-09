@@ -12,6 +12,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -32,7 +34,7 @@ class CustomerServiceImplTest {
     @Test
     void saveCustomer() {
         //valid data එකක් දීලා බලනවා test එක OKද කියලා.
-        //Assertions methods දාලා අපිට පුලුවන් check කරගන්න අපිට ඕන Output එකම එනවද කියලා.
+        //Assertions methods දාලා අපිට පුලුවන් check කරගන්න අපිට ඕන Output එකම එනවද කියලා.මේක දෙන්නේ jupiter api එකෙන්.
         assertDoesNotThrow(() -> {//මෙතන කියලා තීන්නේ මෙකෙන් error එකක් generate වෙන්නේ නෑ කියලා.
             service.saveCustomer(new CustomerDTO("C00-007", "Ashan", "Matara", 25000.00));
         });
@@ -45,14 +47,34 @@ class CustomerServiceImplTest {
 
     @Test
     void deleteCustomer() {
+        //valid
+        assertDoesNotThrow(()->{
+            service.deleteCustomer("C00-001");
+        });
+
+        //invalid
+        assertThrows(RuntimeException.class,()->{
+            service.deleteCustomer("C00-008");
+        });
     }
 
     @Test
     void updateCustomer() {
+        //valid
+        assertDoesNotThrow(()->{
+            service.updateCustomer(new CustomerDTO("C00-001","Yashodya","Colombo",25000.00));
+        });
+
+        //invalid
+        assertThrows(RuntimeException.class,()->{
+            service.updateCustomer(new CustomerDTO("C00-008","Yashodya","Colombo",25000.00));
+        });
     }
 
     @Test
     void getAllCustomers() {
+        ArrayList<CustomerDTO> allCustomers = service.getAllCustomers();
+        assertTrue(allCustomers.size()>0);
     }
 
     @Test
