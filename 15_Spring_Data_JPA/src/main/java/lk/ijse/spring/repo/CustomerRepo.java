@@ -34,6 +34,19 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     Customer findCustomerByNameAndAddress(String name,String address);
 
     //Native SQL
-    @Query(value = "select * from Customer",nativeQuery = true)
+    @Query(value = "select * from Customer",nativeQuery = true)//nativeQuery attribute එක default එන්න false ඒක true කරගන්න ඕන.
     List<Customer> methodOne();
+
+    @Query(value = "select * from Customer where id='C00-001'",nativeQuery = true)
+    Customer methodTwo();
+
+    //Positional Params
+    //Name Params
+
+    //Positional Params(Positions අනුවනම් parameters set කරලා තීන්නේ ඒවට කියනවා Positional Params කියලා.)
+    @Query(value = "select * from Customer where id=?1",nativeQuery = true)//මේකේ 1 කියලා දාලා කියලා තීන්නේ පලවෙනි එකට එන value එක මේකට set කරන්න කියලා.
+    Customer methodThree(String id);
+
+    @Query(value = "select * from Customer where id=?1 and name=?2",nativeQuery = true)//මේකේ 1,2 කියලා දාලා කියලා තීන්නේ පලවෙනි එකට එන value එක පලවෙනි එකට set කරන්න, දෙවනි එකට එන value එක දෙවනි එකට set කරන්න කියලා.
+    Customer methodFour(String id,String name);
 }

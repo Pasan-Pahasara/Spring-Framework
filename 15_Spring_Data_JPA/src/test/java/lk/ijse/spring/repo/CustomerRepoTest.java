@@ -38,7 +38,7 @@ class CustomerRepoTest {
      * Test Class එකෙන් delete කරන එක risk උනාට add කරන්න පුලුවන් database එකට data. හැබැයි අපිට පුලුවන් @Transactional annotation එකෙන් database එකට add නොකර ඒක check කරගන්න විතරක්..
      */
     @Test
-    void addCustomers(){
+    void addCustomers() {
         Customer c1 = new Customer("C00-007", "Maneesha", "Panadura", 25000.00);
         Customer c2 = new Customer("C00-008", "Sadun", "Colombo", 35000.00);
         repo.save(c1);
@@ -99,10 +99,28 @@ class CustomerRepoTest {
     }
 
     @Test
-    void testAllMethods4() {
+    void NativeSQLTestMethods1() {
         List<Customer> list = repo.methodOne();
         for (Customer customer : list) {
             System.out.println(customer);
         }
+    }
+
+    @Test
+    void NativeSQLTestMethods2() {
+        Customer c1 = repo.methodTwo();
+        System.out.println(c1);
+    }
+
+    @Test
+    void NativeSQLTestMethods3() {
+        Customer c1 = repo.methodThree("C00-001");
+        System.out.println(c1);
+    }
+
+    @Test
+    void NativeSQLTestMethods4() {
+        Customer c1 = repo.methodFour("C00-001","Yashodya");
+        System.out.println(c1);
     }
 }
