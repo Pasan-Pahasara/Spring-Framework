@@ -49,8 +49,8 @@ public class CustomerController {
         return new ResponseUtil("OK", "Successfully Updated..! : " + customerDTO.getId(), null);
     }
 
-    @GetMapping
-    public ResponseUtil getAllCustomers() {
-        return new ResponseUtil("OK", "Successfully Loaded..!", service.getAllCustomers());
+    @GetMapping(path = "/{name}")
+    public ResponseUtil searchCustomerByName(@PathVariable String name) {
+        return new ResponseUtil("OK", "Successfully Searched By Name..!", service.searchCustomerWithName(name));//Query Methods වලන් අපිට ඕන query එකක් generate කරගන්න පුලුවන්.
     }
 }

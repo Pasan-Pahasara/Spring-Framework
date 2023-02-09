@@ -62,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService {
 //        ArrayList<CustomerDTO> customerDTOArrayList = mapper.map(all, new TypeToken<ArrayList<CustomerDTO>>() {}.getType());//List එක convert කරනවා DTO එකකට.TypeToken class එකේ generics වලට දෙනවා CustomerDTO type එකේ ArrayList එකක්.
         return mapper.map(repo.findAll(), new TypeToken<ArrayList<CustomerDTO>>() {}.getType());//alternative
     }
+
+    @Override
+    public CustomerDTO searchCustomerWithName(String name) {
+        return mapper.map(repo.findCustomerByName(name),CustomerDTO.class);//Query Methods Searching by Name
+    }
 }

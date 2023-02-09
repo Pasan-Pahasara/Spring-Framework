@@ -12,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 //මේකෙදි ඉල්ලනවා generics 2 ක්. ඒකට දෙනවා මේ repo එකට අදාල entity එකයි ඒකේ primary key එකේ data type එකයි.
 public interface CustomerRepo extends JpaRepository <Customer,String>{
+    Customer findCustomerByName(String name);//Query Methods
 }
