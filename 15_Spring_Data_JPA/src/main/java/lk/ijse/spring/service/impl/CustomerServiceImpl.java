@@ -65,6 +65,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO searchCustomerWithName(String name) {
-        return mapper.map(repo.findCustomerByName(name),CustomerDTO.class);//Query Methods Searching by Name
+        Customer customer = repo.findCustomerByName(name);
+        if (customer!=null) {
+            return mapper.map(repo.findCustomerByName(name),CustomerDTO.class);//Query Methods Searching by Name
+        }
+        return null;
     }
 }
