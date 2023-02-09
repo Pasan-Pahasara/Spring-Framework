@@ -23,8 +23,10 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     Customer queryCustomerByName(String name);
     Customer searchCustomerByName(String name);
     Customer streamCustomerByName(String name);
-    Customer countCustomerByName(String name);
-    Customer existsCustomerByName(String name);
-    Customer deleteCustomerByName(String name);
-    Customer removeCustomerByName(String name);
+
+
+    Long countCustomerByName(String name);//මෙකෙ return type එක Long. number එකක් එන්නේ.
+    Boolean existsCustomerByName(String name);//මෙකෙ return type එක Boolean. number එකක් එන්නේ.
+    void deleteCustomerByName(String name);
+    void removeCustomerByName(String name);
 }

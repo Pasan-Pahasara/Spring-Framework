@@ -9,9 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author : ShEnUx
@@ -19,12 +18,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * @date : 2/9/2023
  * @since : 0.1.0
  **/
+
 /**
  * Testing වලටත් වෙනම context එකක් හැදෙනවා. ඒ context එකට අදාලව ඒක create කරගන්න තමයි මේ annotation 3න දාන්නේ.
- * **/
+ **/
 @WebAppConfiguration//create the testing context
 @ContextConfiguration(classes = {WebRootConfig.class})//add configuration for that context
 @ExtendWith(SpringExtension.class)//integrate junit with spring
+@Transactional
 class CustomerRepoTest {
 
     /**
@@ -32,6 +33,18 @@ class CustomerRepoTest {
      **/
     @Autowired
     CustomerRepo repo;
+
+    /**
+     * Test Class එකෙන් delete කරන එක risk උනාට add කරන්න පුලුවන් database එකට data. හැබැයි අපිට පුලුවන් @Transactional annotation එකෙන් database එකට add නොකර ඒක check කරගන්න විතරක්..
+     */
+    @Test
+    void addCustomers(){
+        Customer c1 = new Customer("C00-007", "Maneesha", "Panadura", 25000.00);
+        Customer c2 = new Customer("C00-008", "Sadun", "Colombo", 35000.00);
+        repo.save(c1);
+        repo.save(c2);
+    }
+
     @Test
     void findByName() {
         List<Customer> list = repo.findByName("Pahasara");
@@ -45,10 +58,11 @@ class CustomerRepoTest {
         Customer pahasara = repo.findCustomerByName("Nimesh");
         System.out.println(pahasara);
     }
+
     @Test
     void testAllMethods() {
         /**
-         * මේ හැම එකකින්ම වදින්නේ එකම query එක.
+         * මේ හැම එකකින්ම වදින්නේ එකම query එක. return type එක Entity එකක්.
          * */
         Customer c1 = repo.findCustomerByName("Nimesh");
         Customer c2 = repo.readCustomerByName("Nimesh");
@@ -63,5 +77,18 @@ class CustomerRepoTest {
         System.out.println(c5);
         System.out.println(c5);
 
+    }
+
+    @Test
+    void testAllMethods2() {
+        /**
+         * මේ හැම එකකින්ම වදින්නේ එකම query එක.
+         * */
+        Long count = repo.countCustomerByName("Pahasara");
+        System.out.println(count);
+        Boolean available = repo.existsCustomerByName("Pahasara");
+        System.out.println(available);
+        repo.deleteCustomerByName("Nimesh");//test කරද්දි ඇටත්තටම delete කරන්න බෑ database එකෙන්. ඒක ගොඩාක් risk. හැබැයි අපිට පුලුවන් @Transactional annotation එකෙන් database එකෙන් delete නොකර ඒක check කරගන්න විතරක්..
+        repo.removeCustomerByName("Pahasara");
     }
 }
