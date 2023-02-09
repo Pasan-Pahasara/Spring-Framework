@@ -129,4 +129,12 @@ class CustomerRepoTest {
         Customer c1 = repo.methodFive("C00-001","Yashodya");
         System.out.println(c1);
     }
+
+    @Test
+    void JPQL() {
+        List<Customer> jpql = repo.getCustomerWithJPQL();
+        for (Customer customer : jpql) {
+            System.out.println(customer);
+        }
+    }
 }

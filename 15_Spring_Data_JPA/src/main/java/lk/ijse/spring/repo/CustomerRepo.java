@@ -56,6 +56,11 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     //Name Params
     //a = id param value
     //b = name param value
+    //@Param = required annotation
     @Query(value = "select * from Customer where id=:a and name=:b",nativeQuery = true)//මේකේ a name value එකට id එකේ @Param value එක set කරනවා සහ b name value එකට name එකේ @Param value එක set කරනවා
     Customer methodFive(@Param("a") String id, @Param("b") String name);
+
+    //JPQL(මේක Java Persistent Api එකෙන් introduce කරපු එක)
+    @Query(value = "select u from Customer u")
+    List<Customer> getCustomerWithJPQL();
 }
