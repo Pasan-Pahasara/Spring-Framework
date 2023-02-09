@@ -3,6 +3,7 @@ package lk.ijse.spring.repo;
 import lk.ijse.spring.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -47,6 +48,14 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     @Query(value = "select * from Customer where id=?1",nativeQuery = true)//මේකේ 1 කියලා දාලා කියලා තීන්නේ පලවෙනි එකට එන value එක මේකට set කරන්න කියලා.
     Customer methodThree(String id);
 
+    //1 = id param value
+    //2 = name param value
     @Query(value = "select * from Customer where id=?1 and name=?2",nativeQuery = true)//මේකේ 1,2 කියලා දාලා කියලා තීන්නේ පලවෙනි එකට එන value එක පලවෙනි එකට set කරන්න, දෙවනි එකට එන value එක දෙවනි එකට set කරන්න කියලා.
     Customer methodFour(String id,String name);
+
+    //Name Params
+    //a = id param value
+    //b = name param value
+    @Query(value = "select * from Customer where id=:a and name=:b",nativeQuery = true)//මේකේ a name value එකට id එකේ @Param value එක set කරනවා සහ b name value එකට name එකේ @Param value එක set කරනවා
+    Customer methodFive(@Param("a") String id, @Param("b") String name);
 }
