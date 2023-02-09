@@ -25,7 +25,7 @@ import java.util.List;
 @WebAppConfiguration//create the testing context
 @ContextConfiguration(classes = {WebRootConfig.class})//add configuration for that context
 @ExtendWith(SpringExtension.class)//integrate junit with spring
-@Transactional
+@Transactional //database එකට අවුලක් නවෙන්න අපිට test කරන්න මේ annotation එක use කරනවා.
 class CustomerRepoTest {
 
     /**
@@ -90,5 +90,11 @@ class CustomerRepoTest {
         System.out.println(available);
         repo.deleteCustomerByName("Nimesh");//test කරද්දි ඇටත්තටම delete කරන්න බෑ database එකෙන්. ඒක ගොඩාක් risk. හැබැයි අපිට පුලුවන් @Transactional annotation එකෙන් database එකෙන් delete නොකර ඒක check කරගන්න විතරක්..
         repo.removeCustomerByName("Pahasara");
+    }
+
+    @Test
+    void testAllMethods3() {
+        Customer c1 = repo.findCustomerByNameAndAddress("Pahasara", "Panadura");
+        System.out.println(c1);
     }
 }

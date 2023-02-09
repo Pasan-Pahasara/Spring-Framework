@@ -29,4 +29,6 @@ public interface CustomerRepo extends JpaRepository <Customer,String> {
     Boolean existsCustomerByName(String name);//මෙකෙ return type එක Boolean. number එකක් එන්නේ.
     void deleteCustomerByName(String name);
     void removeCustomerByName(String name);
+
+    Customer findCustomerByNameAndAddress(String name,String address);
 }
