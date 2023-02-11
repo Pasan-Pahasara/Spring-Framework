@@ -1,5 +1,5 @@
 # Spring-Framework
-This Project is introduced to learning Spring MVC and Spring Boot. 
+This Project is introduced to learning Spring MVC, Spring Core Container, Spring Data Access/Integration, Spring Test and Spring Boot.
 #
 ![216781707-934a7e83-9c7e-45ad-95f8-bb4effe771dd](https://user-images.githubusercontent.com/88943660/218254011-dd730a32-2fbe-4ea8-9229-e2eb22b94834.jpg)
 
