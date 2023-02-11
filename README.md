@@ -23,7 +23,7 @@ https://github.com/Pasan-Pahasara/Spring-Framework.git
  
 ![GitHub forks](https://img.shields.io/github/forks/Pasan-Pahasara/Spring-Framework?&labelColor=black&color=0fb9b1&style=for-the-badge)
 ![GitHub stars](https://img.shields.io/github/stars/Pasan-Pahasara/Spring-Framework?&labelColor=black&color=f7b731&style=for-the-badge)
-![GitHub LastCommit](https://img.shields.io/github/last-commit/Spring-Framework?logo=github&labelColor=black&color=d1d8e0&style=for-the-badge)
+![GitHub LastCommit](https://img.shields.io/github/last-commit/Pasan-Pahasara/Spring-Framework?logo=github&labelColor=black&color=d1d8e0&style=for-the-badge)
 
 </div>
 
